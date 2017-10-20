@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Note," />
 
 
 
@@ -81,16 +81,18 @@
 
 
 
-<meta name="description" content="我于杀戮之中盛放，亦如黎明中的花朵">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ybx&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="node.js核心模块学习 HTTP模块 Node.js标准库提供了http模块，其中封装了一个高效的HTTP服务器和一个简易的HTTP客户端。http.Server是一个基于事件的HTTP服务器，它的核心由Node.js下层C++部分实现，而接口由JavaScript封装，兼顾了高性能与简易性。http.request则是一个HTTP客户端工具，用于向HTTP服务器发起请求。  HTTP服务器">
+<meta name="keywords" content="Note">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node.js学习笔记(一)">
+<meta property="og:url" content="http://yoursite.com/2017/10/20/note1/index.html">
 <meta property="og:site_name" content="ybx&#39;s Blog">
-<meta property="og:description" content="我于杀戮之中盛放，亦如黎明中的花朵">
+<meta property="og:description" content="node.js核心模块学习 HTTP模块 Node.js标准库提供了http模块，其中封装了一个高效的HTTP服务器和一个简易的HTTP客户端。http.Server是一个基于事件的HTTP服务器，它的核心由Node.js下层C++部分实现，而接口由JavaScript封装，兼顾了高性能与简易性。http.request则是一个HTTP客户端工具，用于向HTTP服务器发起请求。  HTTP服务器">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-20T04:18:20.688Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ybx&#39;s Blog">
-<meta name="twitter:description" content="我于杀戮之中盛放，亦如黎明中的花朵">
+<meta name="twitter:title" content="node.js学习笔记(一)">
+<meta name="twitter:description" content="node.js核心模块学习 HTTP模块 Node.js标准库提供了http模块，其中封装了一个高效的HTTP服务器和一个简易的HTTP客户端。http.Server是一个基于事件的HTTP服务器，它的核心由Node.js下层C++部分实现，而接口由JavaScript封装，兼顾了高性能与简易性。http.request则是一个HTTP客户端工具，用于向HTTP服务器发起请求。  HTTP服务器">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/20/note1/"/>
 
 
 
 
 
-  <title>ybx's Blog</title>
+  <title>node.js学习笔记(一) | ybx's Blog</title>
   
 
 
@@ -145,8 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -229,9 +230,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -261,9 +262,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/20/note1/" itemprop="url">node.js学习笔记(一)</a></h1>
+          <h1 class="post-title" itemprop="name headline">node.js学习笔记(一)</h1>
         
 
         <div class="post-meta">
@@ -324,20 +323,52 @@
       
 
       
-        
-          <p>node.js核心模块学习</p>
+        <p>node.js核心模块学习</p>
 <h2 id="HTTP模块"><a href="#HTTP模块" class="headerlink" title="HTTP模块"></a>HTTP模块</h2><blockquote>
 <p>Node.js标准库提供了http模块，其中封装了一个高效的HTTP服务器和一个简易的HTTP客户端。http.Server是一个基于事件的HTTP服务器，它的核心由Node.js下层C++部分实现，而接口由JavaScript封装，兼顾了高性能与简易性。http.request则是一个HTTP客户端工具，用于向HTTP服务器发起请求。</p>
 </blockquote>
-<h3 id="HTTP服务器"><a href="#HTTP服务器" class="headerlink" title="HTTP服务器"></a>HTTP服务器</h3>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/20/note1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+<h3 id="HTTP服务器"><a href="#HTTP服务器" class="headerlink" title="HTTP服务器"></a>HTTP服务器</h3><a id="more"></a>
+<p>http.Server是http模块中的HTTP服务器对象，是一个基于事件的HTTP服务器，所有的请求都被封装为独立的事件，它继承自EventEmitter，提供了以下几个事件</p>
+<ul>
+<li>request：当客户端请求到来时，该事件被触发，提供两个参数req和res，分别是http.ServerRequest和http.ServerResponse的实例，表示请求和响应信息。</li>
+<li>connection：当 TCP 连接建立时，该事件被触发，提供一个参数 socket，为net.Socket 的实例。</li>
+<li>close ：当服务器关闭时，该事件被触发。</li>
+</ul>
+<p>对于request事件，http提供了一个捷径：http.createServer([<br>requestListener]),功能是创建一个HTTP服务器并将requestListener作为request 事件的监听函数。</p>
+<p>使用http实现服务器：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</div><div class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</div><div class="line">res.writeHead(<span class="number">200</span>, &#123;<span class="string">'Content-Type'</span>: <span class="string">'text/html'</span>&#125;);</div><div class="line">res.write(<span class="string">'&lt;h1&gt;Node.js&lt;/h1&gt;'</span>);</div><div class="line">res.end(<span class="string">'&lt;p&gt;Hello World&lt;/p&gt;'</span>);</div><div class="line">&#125;).listen(<span class="number">3000</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"HTTP server is listening at port 3000."</span>);</div></pre></td></tr></table></figure>
+<p>事实上的显式方法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>); </div><div class="line"><span class="keyword">var</span> server = <span class="keyword">new</span> http.Server();</div><div class="line">server.on(<span class="string">'request'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123; res.writeHead(<span class="number">200</span>, </div><div class="line">&#123;<span class="string">'Content-Type'</span>:<span class="string">'text/html'</span>&#125;);</div><div class="line">res.write(<span class="string">'&lt;h1&gt;Node.js&lt;/h1&gt;'</span>); </div><div class="line">res.end(<span class="string">'&lt;p&gt;Hello World&lt;/p&gt;'</span>); &#125;);</div><div class="line">server.listen(<span class="number">3000</span>); </div><div class="line"><span class="built_in">console</span>.log(<span class="string">"HTTP server is listening at port 3000."</span>);</div></pre></td></tr></table></figure>
+<h4 id="http-ServerRequest"><a href="#http-ServerRequest" class="headerlink" title="http.ServerRequest"></a>http.ServerRequest</h4><p>http.ServerRequest 是 HTTP 请求的信息，它一般由http.Server 的<br>request 事件发送，作为第一个参数传递，通常简称 request 或 req。 http.ServerRequest 提供了以下3个事件用于控制请求体传输</p>
+<ul>
+<li><p>data ：当请求体数据到来时，该事件被触发。该事件提供一个参数 chunk，表示接收到的数据。如果该事件没有被监听，那么请求体将会被抛弃。该事件可能会被调用多次。</p>
+</li>
+<li><p>end ：当请求体数据传输完成时，该事件被触发，此后将不会再有数据到来。</p>
+</li>
+<li>close： 用户当前请求结束时，该事件被触发。不同于 end，如果用户强制终止了传输，也还是调用close。</li>
+</ul>
+<h4 id="http-ServerResponse"><a href="#http-ServerResponse" class="headerlink" title="http.ServerResponse"></a>http.ServerResponse</h4><p>http.ServerResponse是返回给客户端的信息，决定了用户最终能看到的结果。它也是由 http.Server 的 request 事件发送的，作为第二个参数传递，一般简称为response 或 res。<br>http.ServerResponse 有三个重要的成员函数，用于返回响应头、响应内容以及结束请求。</p>
+<ul>
+<li><p>response.writeHead(statusCode, [headers])：向请求的客户端发送响应头。statusCode是HTTP状态码，如200（请求成功）、404（未找到）等。headers是一个类似关联数组的对象，表示响应头的每个属性。</p>
+</li>
+<li><p>response.write(data, [encoding])：向请求的客户端发送响应内容。 data 是一个 Buffer 或字符串，表示要发送的内容。如果data是字符串，那么需要指定encoding 来说明它的编码方式，默认是 utf-8。</p>
+</li>
+<li><p>response.end([data], [encoding])：结束响应，告知客户端所有发送已经完成。</p>
+</li>
+</ul>
+<h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><p>http 模块提供了两个函数 http.request 和 http.get，功能是作为客户端向 HTTP服务器发起请求</p>
+<h3 id="http-request"><a href="#http-request" class="headerlink" title="http.request"></a>http.request</h3><p>http.request(options, callback)<br>发起HTTP请求。接受两个参数，option是一个类似关联数组的对象，表示请求的参数，callback是请求的回调函数。</p>
+<p>option常用的参数:</p>
+<ul>
+<li>host ：请求网站的域名或 IP 地址。</li>
+<li>port ：请求网站的端口，默认 80。</li>
+<li>method ：请求方法，默认是 GET。</li>
+<li>path ：请求的相对于根的路径，默认是“ /”。 QueryString 应该包含在其中。</li>
+<li>headers ：一个关联数组对象，为请求头的内容。</li>
+</ul>
+<p>callback传递一个参数,为http.ClientResponse的实例。http.request返回一个http.ClientRequest的实例。</p>
+<h3 id="http-get"><a href="#http-get" class="headerlink" title="http.get"></a>http.get</h3><p>http.get(options, callback) http 模块还提供了一个更加简便的方法用于处理GET请求：http.get。它是 http.request 的简化版，唯一的区别在于http.get自动将请求方法设为了 GET 请求，同时不需要手动调用 req.end()。</p>
+
       
     </div>
     
@@ -352,292 +383,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/19/second-blog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanna-fly">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ybx's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/19/second-blog/" itemprop="url">第二天</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T12:00:00+08:00">
-                2017-10-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/Note/" rel="tag"># Note</a>
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/19/second-blog/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/10/19/second-blog/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          <p>测试用博客</p>
-<h2 id="需要完善的地方"><a href="#需要完善的地方" class="headerlink" title="需要完善的地方"></a>需要完善的地方</h2><p> 添加阅读全文，显示文章一部分</p>
-<p> 添加评论留言功能</p>
-<h2 id="后续任务"><a href="#后续任务" class="headerlink" title="后续任务"></a>后续任务</h2><p> nodejs学习</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/19/second-blog/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/19/second-blog/" rel="next" title="第二天">
+                <i class="fa fa-chevron-left"></i> 第二天
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/18/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanna-fly">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ybx's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/18/hello-world/" itemprop="url">helloworld</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+          <div class="post-nav-prev post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-18T20:00:00+08:00">
-                2017-10-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/18/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/10/18/hello-world/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>欢迎来到我的博客<a href="https://wannafly.xyz/" target="_blank" rel="external">https://wannafly.xyz/</a>! This is my first blog.</p>
-<blockquote>
-<p>一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</p>
-</blockquote>
-<h2 id="今天搭建博客遇到的问题"><a href="#今天搭建博客遇到的问题" class="headerlink" title="今天搭建博客遇到的问题"></a>今天搭建博客遇到的问题</h2><h3 id="关于hexo配置"><a href="#关于hexo配置" class="headerlink" title="关于hexo配置"></a>关于hexo配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init</div></pre></td></tr></table></figure>
-<p>需要在空文件夹中进行初始化框架<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/18/hello-world/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -647,10 +422,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -658,6 +434,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -678,8 +468,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -772,6 +571,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP模块"><span class="nav-number">1.</span> <span class="nav-text">HTTP模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP服务器"><span class="nav-number">1.1.</span> <span class="nav-text">HTTP服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#http-ServerRequest"><span class="nav-number">1.1.1.</span> <span class="nav-text">http.ServerRequest</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#http-ServerResponse"><span class="nav-number">1.1.2.</span> <span class="nav-text">http.ServerResponse</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端"><span class="nav-number">2.</span> <span class="nav-text">客户端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#http-request"><span class="nav-number">2.1.</span> <span class="nav-text">http.request</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-get"><span class="nav-number">2.2.</span> <span class="nav-text">http.get</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -912,6 +727,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
@@ -929,6 +748,18 @@
       <script id="dsq-count-scr" src="https://ybx.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/10/20/note1/';
+          this.page.identifier = '2017/10/20/note1/';
+          this.page.title = 'node.js学习笔记(一)';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://ybx.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
