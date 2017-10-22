@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-10-22T13:34:23.226Z</updated>
+  <updated>2017-10-22T13:36:56.818Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,21 +21,39 @@
     <link href="http://yoursite.com/2017/10/22/mongodb/"/>
     <id>http://yoursite.com/2017/10/22/mongodb/</id>
     <published>2017-10-22T12:58:23.062Z</published>
-    <updated>2017-10-22T13:34:23.226Z</updated>
+    <updated>2017-10-22T13:36:56.818Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="概念解析"><a href="#概念解析" class="headerlink" title="概念解析"></a>概念解析</h2><table><thead><tr><th>SQL术语/概念</th><th>MongoDB术语/概念</th><th>解释/说明</th></tr></thead><tbody><tr><td>table</td><td>collection</td><td>数据库表/集合</td></tr><tr><td>row</td><td>document</td><td>数据记录行/文档</td></tr><tr><td>column</td><td>field</td><td>数据字段/域</td></tr></tbody></table><h2 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">use</span> DATABASE_NAME</div></pre></td></tr></table></figure><p>如果数据库不存在，则创建数据库，否则切换到指定数据库。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.dropDatabase()</div></pre></td></tr></table></figure></p><p>删除当前数据库(使用 db 命令查看当前数据库名。)</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.drop()</div></pre></td></tr></table></figure><p>删除集合<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.COLLECTION_NAME.insert(document)</div></pre></td></tr></table></figure></p><p>向集合中插入文档，使用 insert() 或 save() 方法。如果该集合不存在，mongoDb会自动创建该集合并插入文档<br>3.2版本后还有以下语法可用于插入文档:</p><blockquote><p>db.collection.insertOne():向指定集合中插入一条文档数据<br>db.collection.insertMany():向指定集合中插入多条文档数据</p></blockquote><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.col.update(&#123;'title':'MongoDB 教程'&#125;,&#123;$set:&#123;'title':'MongoDB'&#125;&#125;)</div></pre></td></tr></table></figure><p>更新语句示例，如果修改多条相同的文档，需要设置 multi 参数为 true。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.col.update(&#123;'title':'MongoDB 教程'&#125;,&#123;$set:&#123;'title':'MongoDB'&#125;&#125;,&#123;multi:true&#125;)</div></pre></td></tr></table></figure></p><p>save() 方法通过传入的文档来替换已有文档来更新数据<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.remove()</div></pre></td></tr></table></figure></p><p>删除</p><blockquote><p>db.col.find().pretty()<br>pretty() 方法以格式化的方式来显示所有文档。</p></blockquote><p>查询键 by 值为 菜鸟教程 或键 title 值为 MongoDB 教程 的文档。</p><blockquote><p>db.col.find({$or:[{“by”:”菜鸟教程”},{“title”: “MongoDB 教程”}]}).pretty()</p></blockquote><h2 id="条件操作符"><a href="#条件操作符" class="headerlink" title="条件操作符"></a>条件操作符</h2><table><thead><tr><th>操作符</th><th>解释</th><th>含义</th></tr></thead><tbody><tr><td>$gt</td><td>greater than</td><td>&gt;</td></tr><tr><td>$gte</td><td>gt equal</td><td>&gt;=</td></tr><tr><td>$lt</td><td>less than</td><td>&lt;</td></tr><tr><td>$lte</td><td>lt equal</td><td>&lt;=</td></tr><tr><td>$ne</td><td>not equal</td><td>!=</td></tr><tr><td>$eq</td><td>equal</td><td>=</td></tr></tbody></table>]]></content>
+    <content type="html"><![CDATA[<h2 id="概念解析"><a href="#概念解析" class="headerlink" title="概念解析"></a>概念解析</h2><table><thead><tr><th>SQL术语/概念</th><th>MongoDB术语/概念</th><th>解释/说明</th></tr></thead><tbody><tr><td>table</td><td>collection</td><td>数据库表/集合</td></tr><tr><td>row</td><td>document</td><td>数据记录行/文档</td></tr><tr><td>column</td><td>field</td><td>数据字段/域</td></tr></tbody></table><h2 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">use</span> DATABASE_NAME</div></pre></td></tr></table></figure><a id="more"></a><p>如果数据库不存在，则创建数据库，否则切换到指定数据库。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.dropDatabase()</div></pre></td></tr></table></figure></p><p>删除当前数据库(使用 db 命令查看当前数据库名。)</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.drop()</div></pre></td></tr></table></figure><p>删除集合<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.COLLECTION_NAME.insert(document)</div></pre></td></tr></table></figure></p><p>向集合中插入文档，使用 insert() 或 save() 方法。如果该集合不存在，mongoDb会自动创建该集合并插入文档<br>3.2版本后还有以下语法可用于插入文档:</p><blockquote><p>db.collection.insertOne():向指定集合中插入一条文档数据<br>db.collection.insertMany():向指定集合中插入多条文档数据</p></blockquote><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.col.update(&#123;'title':'MongoDB 教程'&#125;,&#123;$set:&#123;'title':'MongoDB'&#125;&#125;)</div></pre></td></tr></table></figure><p>更新语句示例，如果修改多条相同的文档，需要设置 multi 参数为 true。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.col.update(&#123;'title':'MongoDB 教程'&#125;,&#123;$set:&#123;'title':'MongoDB'&#125;&#125;,&#123;multi:true&#125;)</div></pre></td></tr></table></figure></p><p>save() 方法通过传入的文档来替换已有文档来更新数据<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.remove()</div></pre></td></tr></table></figure></p><p>删除</p><blockquote><p>db.col.find().pretty()<br>pretty() 方法以格式化的方式来显示所有文档。</p></blockquote><p>查询键 by 值为 菜鸟教程 或键 title 值为 MongoDB 教程 的文档。</p><blockquote><p>db.col.find({$or:[{“by”:”菜鸟教程”},{“title”: “MongoDB 教程”}]}).pretty()</p></blockquote><h2 id="条件操作符"><a href="#条件操作符" class="headerlink" title="条件操作符"></a>条件操作符</h2><table><thead><tr><th>操作符</th><th>解释</th><th>含义</th></tr></thead><tbody><tr><td>$gt</td><td>greater than</td><td>&gt;</td></tr><tr><td>$gte</td><td>gt equal</td><td>&gt;=</td></tr><tr><td>$lt</td><td>less than</td><td>&lt;</td></tr><tr><td>$lte</td><td>lt equal</td><td>&lt;=</td></tr><tr><td>$ne</td><td>not equal</td><td>!=</td></tr><tr><td>$eq</td><td>equal</td><td>=</td></tr></tbody></table>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;h2 id=&quot;概念解析&quot;&gt;&lt;a href=&quot;#概念解析&quot; class=&quot;headerlink&quot; title=&quot;概念解析&quot;&gt;&lt;/a&gt;概念解析&lt;/h2&gt;&lt;table&gt;
+      &lt;h2 id=&quot;概念解析&quot;&gt;&lt;a href=&quot;#概念解析&quot; class=&quot;headerlink&quot; title=&quot;概念解析&quot;&gt;&lt;/a&gt;概念解析&lt;/h2&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;SQL术语/概念&lt;/th&gt;
 &lt;th&gt;MongoDB术语/概念&lt;/th&gt;
-&lt;th&gt;
-      
+&lt;th&gt;解释/说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;table&lt;/td&gt;
+&lt;td&gt;collection&lt;/td&gt;
+&lt;td&gt;数据库表/集合&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;row&lt;/td&gt;
+&lt;td&gt;document&lt;/td&gt;
+&lt;td&gt;数据记录行/文档&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;column&lt;/td&gt;
+&lt;td&gt;field&lt;/td&gt;
+&lt;td&gt;数据字段/域&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&quot;增删改查&quot;&gt;&lt;a href=&quot;#增删改查&quot; class=&quot;headerlink&quot; title=&quot;增删改查&quot;&gt;&lt;/a&gt;增删改查&lt;/h2&gt;&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;use&lt;/span&gt; DATABASE_NAME&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
@@ -97,9 +115,9 @@
     <link href="http://yoursite.com/2017/10/19/second-blog/"/>
     <id>http://yoursite.com/2017/10/19/second-blog/</id>
     <published>2017-10-19T04:00:00.000Z</published>
-    <updated>2017-10-19T13:14:02.956Z</updated>
+    <updated>2017-10-22T13:42:49.784Z</updated>
     
-    <content type="html"><![CDATA[<p>测试用博客</p><h2 id="需要完善的地方"><a href="#需要完善的地方" class="headerlink" title="需要完善的地方"></a>需要完善的地方</h2><p> 添加阅读全文，显示文章一部分</p><p> 添加评论留言功能</p><h2 id="后续任务"><a href="#后续任务" class="headerlink" title="后续任务"></a>后续任务</h2><p> nodejs学习</p> <a id="more"></a><p> 搭建网站</p>]]></content>
+    <content type="html"><![CDATA[<p>测试用博客</p><h2 id="需要完善的地方"><a href="#需要完善的地方" class="headerlink" title="需要完善的地方"></a>需要完善的地方</h2><p> 添加阅读全文，显示文章一部分</p><p> 添加评论留言功能</p><h2 id="后续任务"><a href="#后续任务" class="headerlink" title="后续任务"></a>后续任务</h2><p> nodejs学习</p> <a id="more"></a><p> 搭建网站</p><p> 捋一捋搭建步骤</p><ol><li>搭建环境，node.js，git，github账户及pages，ssh配置</li><li>安装hexo，配置本地blog文件夹，配置deployment到github</li><li>安装主题（Next）并配置个性设置</li><li>绑定域名，添加解析记录</li></ol>]]></content>
     
     <summary type="html">
     
