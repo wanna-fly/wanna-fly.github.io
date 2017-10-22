@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Test," />
+  <meta name="keywords" content="Note," />
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="测试用博客 需要完善的地方 添加阅读全文，显示文章一部分  添加评论留言功能 后续任务 nodejs学习">
-<meta name="keywords" content="Test">
+<meta name="description" content="概念解析   SQL术语/概念 MongoDB术语/概念 解释/说明     table collection 数据库表/集合   row document 数据记录行/文档   column field 数据字段/域    增删改查1use DATABASE_NAME 如果数据库不存在，则创建数据库，否则切换到指定数据库。1db.dropDatabase() 删除当前数据库(使用 db 命令查看">
+<meta name="keywords" content="Note">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第二天">
-<meta property="og:url" content="http://yoursite.com/2017/10/19/second-blog/index.html">
+<meta property="og:title" content="mongodb学习">
+<meta property="og:url" content="http://yoursite.com/2017/10/22/mongodb/index.html">
 <meta property="og:site_name" content="ybx&#39;s Blog">
-<meta property="og:description" content="测试用博客 需要完善的地方 添加阅读全文，显示文章一部分  添加评论留言功能 后续任务 nodejs学习">
+<meta property="og:description" content="概念解析   SQL术语/概念 MongoDB术语/概念 解释/说明     table collection 数据库表/集合   row document 数据记录行/文档   column field 数据字段/域    增删改查1use DATABASE_NAME 如果数据库不存在，则创建数据库，否则切换到指定数据库。1db.dropDatabase() 删除当前数据库(使用 db 命令查看">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-19T13:14:02.956Z">
+<meta property="og:updated_time" content="2017-10-22T13:34:23.226Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第二天">
-<meta name="twitter:description" content="测试用博客 需要完善的地方 添加阅读全文，显示文章一部分  添加评论留言功能 后续任务 nodejs学习">
+<meta name="twitter:title" content="mongodb学习">
+<meta name="twitter:description" content="概念解析   SQL术语/概念 MongoDB术语/概念 解释/说明     table collection 数据库表/集合   row document 数据记录行/文档   column field 数据字段/域    增删改查1use DATABASE_NAME 如果数据库不存在，则创建数据库，否则切换到指定数据库。1db.dropDatabase() 删除当前数据库(使用 db 命令查看">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/19/second-blog/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/22/mongodb/"/>
 
 
 
 
 
-  <title>第二天 | ybx's Blog</title>
+  <title>mongodb学习 | ybx's Blog</title>
   
 
 
@@ -245,7 +245,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/19/second-blog/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/22/mongodb/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanna-fly">
@@ -262,7 +262,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">第二天</h1>
+          <h1 class="post-title" itemprop="name headline">mongodb学习</h1>
         
 
         <div class="post-meta">
@@ -274,8 +274,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T12:00:00+08:00">
-                2017-10-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-22T20:58:23+08:00">
+                2017-10-22
               </time>
             
 
@@ -293,9 +293,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/19/second-blog/#comments" itemprop="discussionUrl">
+                <a href="/2017/10/22/mongodb/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/10/19/second-blog/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/10/22/mongodb/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -323,12 +323,93 @@
       
 
       
-        <p>测试用博客</p>
-<h2 id="需要完善的地方"><a href="#需要完善的地方" class="headerlink" title="需要完善的地方"></a>需要完善的地方</h2><p> 添加阅读全文，显示文章一部分</p>
-<p> 添加评论留言功能</p>
-<h2 id="后续任务"><a href="#后续任务" class="headerlink" title="后续任务"></a>后续任务</h2><p> nodejs学习</p>
- <a id="more"></a>
-<p> 搭建网站</p>
+        <h2 id="概念解析"><a href="#概念解析" class="headerlink" title="概念解析"></a>概念解析</h2><table>
+<thead>
+<tr>
+<th>SQL术语/概念</th>
+<th>MongoDB术语/概念</th>
+<th>解释/说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>table</td>
+<td>collection</td>
+<td>数据库表/集合</td>
+</tr>
+<tr>
+<td>row</td>
+<td>document</td>
+<td>数据记录行/文档</td>
+</tr>
+<tr>
+<td>column</td>
+<td>field</td>
+<td>数据字段/域</td>
+</tr>
+</tbody>
+</table>
+<h2 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">use</span> DATABASE_NAME</div></pre></td></tr></table></figure>
+<p>如果数据库不存在，则创建数据库，否则切换到指定数据库。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.dropDatabase()</div></pre></td></tr></table></figure></p>
+<p>删除当前数据库(使用 db 命令查看当前数据库名。)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.drop()</div></pre></td></tr></table></figure>
+<p>删除集合<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.COLLECTION_NAME.insert(document)</div></pre></td></tr></table></figure></p>
+<p>向集合中插入文档，使用 insert() 或 save() 方法。如果该集合不存在，mongoDb会自动创建该集合并插入文档<br>3.2版本后还有以下语法可用于插入文档:</p>
+<blockquote>
+<p>db.collection.insertOne():向指定集合中插入一条文档数据<br>db.collection.insertMany():向指定集合中插入多条文档数据</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.col.update(&#123;'title':'MongoDB 教程'&#125;,&#123;$set:&#123;'title':'MongoDB'&#125;&#125;)</div></pre></td></tr></table></figure>
+<p>更新语句示例，如果修改多条相同的文档，需要设置 multi 参数为 true。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.col.update(&#123;'title':'MongoDB 教程'&#125;,&#123;$set:&#123;'title':'MongoDB'&#125;&#125;,&#123;multi:true&#125;)</div></pre></td></tr></table></figure></p>
+<p>save() 方法通过传入的文档来替换已有文档来更新数据<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.remove()</div></pre></td></tr></table></figure></p>
+<p>删除</p>
+<blockquote>
+<p>db.col.find().pretty()<br>pretty() 方法以格式化的方式来显示所有文档。</p>
+</blockquote>
+<p>查询键 by 值为 菜鸟教程 或键 title 值为 MongoDB 教程 的文档。</p>
+<blockquote>
+<p>db.col.find({$or:[{“by”:”菜鸟教程”},{“title”: “MongoDB 教程”}]}).pretty()</p>
+</blockquote>
+<h2 id="条件操作符"><a href="#条件操作符" class="headerlink" title="条件操作符"></a>条件操作符</h2><table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>解释</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$gt</td>
+<td>greater than</td>
+<td>&gt;</td>
+</tr>
+<tr>
+<td>$gte</td>
+<td>gt equal</td>
+<td>&gt;=</td>
+</tr>
+<tr>
+<td>$lt</td>
+<td>less than</td>
+<td>&lt;</td>
+</tr>
+<tr>
+<td>$lte</td>
+<td>lt equal</td>
+<td>&lt;=</td>
+</tr>
+<tr>
+<td>$ne</td>
+<td>not equal</td>
+<td>!=</td>
+</tr>
+<tr>
+<td>$eq</td>
+<td>equal</td>
+<td>=</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -346,7 +427,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Test/" rel="tag"># Test</a>
+            <a href="/tags/Note/" rel="tag"># Note</a>
           
         </div>
       
@@ -359,8 +440,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/18/hello-world/" rel="next" title="helloworld">
-                <i class="fa fa-chevron-left"></i> helloworld
+              <a href="/2017/10/21/note2/" rel="next" title="node.js学习笔记(二)--动手实例">
+                <i class="fa fa-chevron-left"></i> node.js学习笔记(二)--动手实例
               </a>
             
           </div>
@@ -368,10 +449,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/20/note1/" rel="prev" title="node.js学习笔记(一)">
-                node.js学习笔记(一) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -546,7 +623,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#需要完善的地方"><span class="nav-number">1.</span> <span class="nav-text">需要完善的地方</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后续任务"><span class="nav-number">2.</span> <span class="nav-text">后续任务</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念解析"><span class="nav-number">1.</span> <span class="nav-text">概念解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增删改查"><span class="nav-number">2.</span> <span class="nav-text">增删改查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件操作符"><span class="nav-number">3.</span> <span class="nav-text">条件操作符</span></a></li></ol></div>
             
 
           </div>
@@ -716,9 +793,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/10/19/second-blog/';
-          this.page.identifier = '2017/10/19/second-blog/';
-          this.page.title = '第二天';
+          this.page.url = 'http://yoursite.com/2017/10/22/mongodb/';
+          this.page.identifier = '2017/10/22/mongodb/';
+          this.page.title = 'mongodb学习';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://ybx.disqus.com/embed.js';

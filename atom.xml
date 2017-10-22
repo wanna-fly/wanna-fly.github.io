@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-10-21T08:33:24.982Z</updated>
+  <updated>2017-10-22T13:34:23.226Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mongodb学习</title>
+    <link href="http://yoursite.com/2017/10/22/mongodb/"/>
+    <id>http://yoursite.com/2017/10/22/mongodb/</id>
+    <published>2017-10-22T12:58:23.062Z</published>
+    <updated>2017-10-22T13:34:23.226Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="概念解析"><a href="#概念解析" class="headerlink" title="概念解析"></a>概念解析</h2><table><thead><tr><th>SQL术语/概念</th><th>MongoDB术语/概念</th><th>解释/说明</th></tr></thead><tbody><tr><td>table</td><td>collection</td><td>数据库表/集合</td></tr><tr><td>row</td><td>document</td><td>数据记录行/文档</td></tr><tr><td>column</td><td>field</td><td>数据字段/域</td></tr></tbody></table><h2 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">use</span> DATABASE_NAME</div></pre></td></tr></table></figure><p>如果数据库不存在，则创建数据库，否则切换到指定数据库。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.dropDatabase()</div></pre></td></tr></table></figure></p><p>删除当前数据库(使用 db 命令查看当前数据库名。)</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.drop()</div></pre></td></tr></table></figure><p>删除集合<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.COLLECTION_NAME.insert(document)</div></pre></td></tr></table></figure></p><p>向集合中插入文档，使用 insert() 或 save() 方法。如果该集合不存在，mongoDb会自动创建该集合并插入文档<br>3.2版本后还有以下语法可用于插入文档:</p><blockquote><p>db.collection.insertOne():向指定集合中插入一条文档数据<br>db.collection.insertMany():向指定集合中插入多条文档数据</p></blockquote><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.col.update(&#123;'title':'MongoDB 教程'&#125;,&#123;$set:&#123;'title':'MongoDB'&#125;&#125;)</div></pre></td></tr></table></figure><p>更新语句示例，如果修改多条相同的文档，需要设置 multi 参数为 true。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.col.update(&#123;'title':'MongoDB 教程'&#125;,&#123;$set:&#123;'title':'MongoDB'&#125;&#125;,&#123;multi:true&#125;)</div></pre></td></tr></table></figure></p><p>save() 方法通过传入的文档来替换已有文档来更新数据<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.remove()</div></pre></td></tr></table></figure></p><p>删除</p><blockquote><p>db.col.find().pretty()<br>pretty() 方法以格式化的方式来显示所有文档。</p></blockquote><p>查询键 by 值为 菜鸟教程 或键 title 值为 MongoDB 教程 的文档。</p><blockquote><p>db.col.find({$or:[{“by”:”菜鸟教程”},{“title”: “MongoDB 教程”}]}).pretty()</p></blockquote><h2 id="条件操作符"><a href="#条件操作符" class="headerlink" title="条件操作符"></a>条件操作符</h2><table><thead><tr><th>操作符</th><th>解释</th><th>含义</th></tr></thead><tbody><tr><td>$gt</td><td>greater than</td><td>&gt;</td></tr><tr><td>$gte</td><td>gt equal</td><td>&gt;=</td></tr><tr><td>$lt</td><td>less than</td><td>&lt;</td></tr><tr><td>$lte</td><td>lt equal</td><td>&lt;=</td></tr><tr><td>$ne</td><td>not equal</td><td>!=</td></tr><tr><td>$eq</td><td>equal</td><td>=</td></tr></tbody></table>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;概念解析&quot;&gt;&lt;a href=&quot;#概念解析&quot; class=&quot;headerlink&quot; title=&quot;概念解析&quot;&gt;&lt;/a&gt;概念解析&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;SQL术语/概念&lt;/th&gt;
+&lt;th&gt;MongoDB术语/概念&lt;/th&gt;
+&lt;th&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="Note" scheme="http://yoursite.com/tags/Note/"/>
+    
+  </entry>
   
   <entry>
     <title>node.js学习笔记(二)--动手实例</title>
