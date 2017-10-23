@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-10-22T13:36:56.818Z</updated>
+  <updated>2017-10-23T11:21:37.260Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>从网页中提取背景图片</title>
+    <link href="http://yoursite.com/2017/10/23/tips/"/>
+    <id>http://yoursite.com/2017/10/23/tips/</id>
+    <published>2017-10-22T16:00:00.000Z</published>
+    <updated>2017-10-23T11:21:37.260Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a><p>右键-&gt;检查元素，在下方开发者工具右侧，找到style/样式，查找background下url，输入地址访问，右键保存</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;右键-&amp;gt;检查元素，在下方开发者工具右侧，找到style/样式，查找background下url，输入地址访问，右键保存&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="tips" scheme="http://yoursite.com/tags/tips/"/>
+    
+  </entry>
   
   <entry>
     <title>mongodb学习</title>
