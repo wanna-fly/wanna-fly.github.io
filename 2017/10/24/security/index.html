@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Note," />
+  <meta name="keywords" content="security," />
 
 
 
@@ -81,18 +81,17 @@
 
 
 
-<meta name="description" content="概念解析   SQL术语/概念 MongoDB术语/概念 解释/说明     table collection 数据库表/集合   row document 数据记录行/文档   column field 数据字段/域    增删改查1use DATABASE_NAME">
-<meta name="keywords" content="Note">
+<meta name="keywords" content="security">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mongodb学习">
-<meta property="og:url" content="http://yoursite.com/2017/10/22/mongodb/index.html">
+<meta property="og:title" content="密码学复习笔记之数学基础">
+<meta property="og:url" content="http://yoursite.com/2017/10/24/security/index.html">
 <meta property="og:site_name" content="ybx&#39;s Blog">
-<meta property="og:description" content="概念解析   SQL术语/概念 MongoDB术语/概念 解释/说明     table collection 数据库表/集合   row document 数据记录行/文档   column field 数据字段/域    增删改查1use DATABASE_NAME">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-22T13:36:56.818Z">
+<meta property="og:image" content="http://yoursite.com/img/cover.jpg">
+<meta property="og:updated_time" content="2017-10-24T14:39:58.143Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mongodb学习">
-<meta name="twitter:description" content="概念解析   SQL术语/概念 MongoDB术语/概念 解释/说明     table collection 数据库表/集合   row document 数据记录行/文档   column field 数据字段/域    增删改查1use DATABASE_NAME">
+<meta name="twitter:title" content="密码学复习笔记之数学基础">
+<meta name="twitter:image" content="http://yoursite.com/img/cover.jpg">
 
 
 
@@ -122,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/22/mongodb/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/24/security/"/>
 
 
 
 
 
-  <title>mongodb学习 | ybx's Blog</title>
+  <title>密码学复习笔记之数学基础 | ybx's Blog</title>
   
 
 
@@ -245,7 +244,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/22/mongodb/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/24/security/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanna-fly">
@@ -262,7 +261,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">mongodb学习</h1>
+          <h1 class="post-title" itemprop="name headline">密码学复习笔记之数学基础</h1>
         
 
         <div class="post-meta">
@@ -274,8 +273,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-22T20:58:23+08:00">
-                2017-10-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-24T16:36:00+08:00">
+                2017-10-24
               </time>
             
 
@@ -293,9 +292,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/22/mongodb/#comments" itemprop="discussionUrl">
+                <a href="/2017/10/24/security/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/10/22/mongodb/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/10/24/security/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -323,94 +322,29 @@
       
 
       
-        <h2 id="概念解析"><a href="#概念解析" class="headerlink" title="概念解析"></a>概念解析</h2><table>
-<thead>
-<tr>
-<th>SQL术语/概念</th>
-<th>MongoDB术语/概念</th>
-<th>解释/说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>table</td>
-<td>collection</td>
-<td>数据库表/集合</td>
-</tr>
-<tr>
-<td>row</td>
-<td>document</td>
-<td>数据记录行/文档</td>
-</tr>
-<tr>
-<td>column</td>
-<td>field</td>
-<td>数据字段/域</td>
-</tr>
-</tbody>
-</table>
-<h2 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">use</span> DATABASE_NAME</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>如果数据库不存在，则创建数据库，否则切换到指定数据库。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.dropDatabase()</div></pre></td></tr></table></figure></p>
-<p>删除当前数据库(使用 db 命令查看当前数据库名。)</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.drop()</div></pre></td></tr></table></figure>
-<p>删除集合<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.COLLECTION_NAME.insert(document)</div></pre></td></tr></table></figure></p>
-<p>向集合中插入文档，使用 insert() 或 save() 方法。如果该集合不存在，mongoDb会自动创建该集合并插入文档<br>3.2版本后还有以下语法可用于插入文档:</p>
+        <p><img src="/img/cover.jpg" alt=""><br><a id="more"></a></p>
+<h2 id="Euclid算法—“辗转相除法”"><a href="#Euclid算法—“辗转相除法”" class="headerlink" title="Euclid算法—“辗转相除法”"></a>Euclid算法—“辗转相除法”</h2><p>如果b|g，b|h,对于任何整数m和n，则满足b|(mg+nh).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if c, d∈Z and c=dq+r,where q,r∈Z, then(c,d)=(d,r)</div><div class="line">proof: 1.r=c-dq, if e|c and e|d, then e|r</div><div class="line">	2.c=dq+r, if e|d and e|r, then e|c</div><div class="line">	=&gt;(c,d)=(d,r)</div></pre></td></tr></table></figure>
+<p>先证明若e是c和d的因数，那么e也是d和r的因数，接着证明若e是d和r的因数，那么e也是c和d的因数，所以得c和d的公因子集合与d和r的公因子集合相等，最大公因子也相等。<br>则欧几里得算法在此基础上迭代即可</p>
+<h2 id="同余和模运算"><a href="#同余和模运算" class="headerlink" title="同余和模运算"></a>同余和模运算</h2><p>a mod m=b, 即 a与ｂ的差是m的整数倍。 a ≡ b(mod m) </p>
 <blockquote>
-<p>db.collection.insertOne():向指定集合中插入一条文档数据<br>db.collection.insertMany():向指定集合中插入多条文档数据</p>
+<p>模运算性质：<br>     令$a_1$和$a_2$为整数，OP代表操作符+、-、*，则$(a_1 OP a_2 ）mod n=[（a_1 mod n）OP（a_2 mod n)] mod n$</p>
 </blockquote>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.col.update(&#123;'title':'MongoDB 教程'&#125;,&#123;$set:&#123;'title':'MongoDB'&#125;&#125;)</div></pre></td></tr></table></figure>
-<p>更新语句示例，如果修改多条相同的文档，需要设置 multi 参数为 true。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.col.update(&#123;'title':'MongoDB 教程'&#125;,&#123;$set:&#123;'title':'MongoDB'&#125;&#125;,&#123;multi:true&#125;)</div></pre></td></tr></table></figure></p>
-<p>save() 方法通过传入的文档来替换已有文档来更新数据<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.remove()</div></pre></td></tr></table></figure></p>
-<p>删除</p>
-<blockquote>
-<p>db.col.find().pretty()<br>pretty() 方法以格式化的方式来显示所有文档。</p>
-</blockquote>
-<p>查询键 by 值为 菜鸟教程 或键 title 值为 MongoDB 教程 的文档。</p>
-<blockquote>
-<p>db.col.find({$or:[{“by”:”菜鸟教程”},{“title”: “MongoDB 教程”}]}).pretty()</p>
-</blockquote>
-<h2 id="条件操作符"><a href="#条件操作符" class="headerlink" title="条件操作符"></a>条件操作符</h2><table>
-<thead>
-<tr>
-<th>操作符</th>
-<th>解释</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>$gt</td>
-<td>greater than</td>
-<td>&gt;</td>
-</tr>
-<tr>
-<td>$gte</td>
-<td>gt equal</td>
-<td>&gt;=</td>
-</tr>
-<tr>
-<td>$lt</td>
-<td>less than</td>
-<td>&lt;</td>
-</tr>
-<tr>
-<td>$lte</td>
-<td>lt equal</td>
-<td>&lt;=</td>
-</tr>
-<tr>
-<td>$ne</td>
-<td>not equal</td>
-<td>!=</td>
-</tr>
-<tr>
-<td>$eq</td>
-<td>equal</td>
-<td>=</td>
-</tr>
-</tbody>
-</table>
+<h2 id="反复平方法"><a href="#反复平方法" class="headerlink" title="反复平方法"></a>反复平方法</h2><p>计算幂取模，将指数换算为二进制数，每个位上若为0，则对应平方，若为1，则对应平方*底数，eg：<br>计算$5^{20} mod35$ ，20 =&gt; 10100,对应$((((((1^2)·5)^2)^2)·5)^2)^2 mod35= 25$</p>
+<h2 id="完全剩余系-amp-既约剩余系"><a href="#完全剩余系-amp-既约剩余系" class="headerlink" title="完全剩余系&amp;既约剩余系"></a>完全剩余系&amp;既约剩余系</h2><p>完全剩余系 Zn={0, 1, 2, …, n-1}(依据同余，将整数在模n中分成n类)<br>既约剩余系Zn*：在模n的完全剩余系中，所有与n互素的数形成的集合=&gt;(元素个数即为欧拉函数φ(n)对应值)</p>
+<h2 id="乘法逆元"><a href="#乘法逆元" class="headerlink" title="乘法逆元"></a>乘法逆元</h2><p>在模n的既约剩余系中取一整数a,则必存在另一整数b（也属于此既约剩余系),使得ab=1modn,且此解唯一。此时，称b为a在模n的乘法逆元，b可表示为a-1</p>
+<h3 id="欧几里得算法求乘法逆元"><a href="#欧几里得算法求乘法逆元" class="headerlink" title="欧几里得算法求乘法逆元"></a>欧几里得算法求乘法逆元</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">求143关于30的乘法逆元，即求x，使得143*x mod30=1 mod30，代换1</div><div class="line">143=30*4+23</div><div class="line">30=23*1+7</div><div class="line">23=7*3+2</div><div class="line">7=2*3+1                      </div><div class="line">2=1*2                        </div><div class="line">则gcd (143, 30)=1</div><div class="line">1=7-2*3              从1（互为乘法逆元最大公因子必为1）开始，逆向代换上一级余数  </div><div class="line"> =7-(23-7*3)*3       整理为两个乘式相减形式时代换上一级余数</div><div class="line"> =7*10-23*3</div><div class="line"> =(30-23)*10-23*3</div><div class="line"> =30*10-23*13</div><div class="line"> =30*10-(143-30*4)*13</div><div class="line"> =30*62-143*13            mod30</div><div class="line"> 143*(-13) ≡ 1(mod 30)	  一定要把143提出来放前边，旨在凑出$143·x mod30=1$的形式</div></pre></td></tr></table></figure>
+<p>求35在模3的乘法逆元</p>
+<h3 id="欧拉函数求乘法逆元"><a href="#欧拉函数求乘法逆元" class="headerlink" title="欧拉函数求乘法逆元"></a>欧拉函数求乘法逆元</h3><h2 id="群环域"><a href="#群环域" class="headerlink" title="群环域"></a>群环域</h2><h3 id="群：集合上定义一种运算"><a href="#群：集合上定义一种运算" class="headerlink" title="群：集合上定义一种运算+"></a>群：集合上定义一种运算+</h3><p>(A1) 加法的封闭性：如果说a和b属于S，则a+b属于S<br>(A2) 加法的结合律：对S中的任意元素a,b,c，a+(b+c)=(a+b)+c<br>(A3) 加法单位元：R中存在一个元素e，使得对于S中的任意元素a，有a+e=e+a=a<br>(A4) 加法逆元：对于S中的任意元素a，S中一定存在一个元素-a，使得a+(-a)=(-a)+a=e<br>满足A1-A4即为群<br>(A5) 交换律：对于G中的任意元素a和b,有a+b=b+a<br>满足A1-到A5称为可交换群。<br>群G的一个生成元素g的幂次构成G群，即G={e，g，g2 ，…，gn}则称G为循环群。<br>如果一个群的元素是有限的，则该群称为有限群，且群的阶等于群中元素的个数；否则称为无限群</p>
+<h3 id="环：集合上定义两种运算"><a href="#环：集合上定义两种运算" class="headerlink" title="环：集合上定义两种运算"></a>环：集合上定义两种运算</h3><p>非空集合R中，若定义了两种代数运算加和乘，且满足：<br>(M1) 乘法的封闭性:如果a和b属于R，则ab属于R<br>(M2) 乘法的结合率：对于R中的任意元素a,b,c，有a(bc)=(ab)c<br>(M3) 分配律：对于R中的任意元素a,b,c，有a(b+c)=ab+ac和(a+b)c=ac+bc</p>
+<p>(M4) 乘法交换律:对于R中的任意元素a和b，ab=ba</p>
+<p>(M5) 乘法单位元：对于F中的任意元素a，在F中存在一个元素i,使得ai=ia=a<br>(M6) 无零因子：对于F中的元素a,b，若ab=0，则有a=0或b=0<br>[A1-M6]：整环<br>(M7)乘法逆元：如果a属于F,且a不为0，则F中存在一个元素$a^{-1}$, 使得$a·a^{-1}=a^{-1}·a=1$<br>[A1-M7]：域 多一个乘法逆元</p>
+<h2 id="多项式运算"><a href="#多项式运算" class="headerlink" title="多项式运算"></a>多项式运算</h2><h3 id="系数在-Z-p-上的运算"><a href="#系数在-Z-p-上的运算" class="headerlink" title="系数在$ Z_p $上的运算"></a>系数在$ Z_p $上的运算</h3><p>系数模上p即可</p>
+<h3 id="系数在-GF-2-n-中的运算"><a href="#系数在-GF-2-n-中的运算" class="headerlink" title="系数在$ GF(2^n) $中的运算"></a>系数在$ GF(2^n) $中的运算</h3><h4 id="加法"><a href="#加法" class="headerlink" title="加法"></a>加法</h4><p>$(x^2+1) + (x^2+x+1) = x $<br>$ 101 XOR 111 = 010_2$</p>
+<h4 id="乘法"><a href="#乘法" class="headerlink" title="乘法"></a>乘法</h4><p>$(x+1)·(x^2+1)  = x^3+x^2+x+1 $<br> $011·101 = 011 XOR 101 = 1111_2 $</p>
+<h4 id="除法"><a href="#除法" class="headerlink" title="除法"></a>除法</h4><p> $(x^3+x^2+x+1 ) mod (x^3+x+1) = 1·(x^3+x+1) + (x^2) = x^2$<br> $1111 mod 1011 = 1111 XOR 1011 = 0100_2$</p>
+<p>如果乘法运算的结果是次数大于n-1的多项式，那么必须将其除以某个次数为n的既约多项式m(x)并取余式</p>
+<p>例题 计算多项式的乘法逆元</p>
 
       
     </div>
@@ -428,7 +362,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Note/" rel="tag"># Note</a>
+            <a href="/tags/security/" rel="tag"># security</a>
           
         </div>
       
@@ -441,8 +375,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/21/note2/" rel="next" title="node.js学习笔记(二)--动手实例">
-                <i class="fa fa-chevron-left"></i> node.js学习笔记(二)--动手实例
+              <a href="/2017/10/23/CSS1/" rel="next" title="CSS初步学习">
+                <i class="fa fa-chevron-left"></i> CSS初步学习
               </a>
             
           </div>
@@ -450,10 +384,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/23/CSS1/" rel="prev" title="CSS初步学习">
-                CSS初步学习 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -628,7 +558,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念解析"><span class="nav-number">1.</span> <span class="nav-text">概念解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增删改查"><span class="nav-number">2.</span> <span class="nav-text">增删改查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件操作符"><span class="nav-number">3.</span> <span class="nav-text">条件操作符</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Euclid算法—“辗转相除法”"><span class="nav-number">1.</span> <span class="nav-text">Euclid算法—“辗转相除法”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同余和模运算"><span class="nav-number">2.</span> <span class="nav-text">同余和模运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反复平方法"><span class="nav-number">3.</span> <span class="nav-text">反复平方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完全剩余系-amp-既约剩余系"><span class="nav-number">4.</span> <span class="nav-text">完全剩余系&既约剩余系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#乘法逆元"><span class="nav-number">5.</span> <span class="nav-text">乘法逆元</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#欧几里得算法求乘法逆元"><span class="nav-number">5.1.</span> <span class="nav-text">欧几里得算法求乘法逆元</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#欧拉函数求乘法逆元"><span class="nav-number">5.2.</span> <span class="nav-text">欧拉函数求乘法逆元</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#群环域"><span class="nav-number">6.</span> <span class="nav-text">群环域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#群：集合上定义一种运算"><span class="nav-number">6.1.</span> <span class="nav-text">群：集合上定义一种运算+</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环：集合上定义两种运算"><span class="nav-number">6.2.</span> <span class="nav-text">环：集合上定义两种运算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多项式运算"><span class="nav-number">7.</span> <span class="nav-text">多项式运算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#系数在-Z-p-上的运算"><span class="nav-number">7.1.</span> <span class="nav-text">系数在$ Z_p $上的运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系数在-GF-2-n-中的运算"><span class="nav-number">7.2.</span> <span class="nav-text">系数在$ GF(2^n) $中的运算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#加法"><span class="nav-number">7.2.1.</span> <span class="nav-text">加法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#乘法"><span class="nav-number">7.2.2.</span> <span class="nav-text">乘法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#除法"><span class="nav-number">7.2.3.</span> <span class="nav-text">除法</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -798,9 +728,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/10/22/mongodb/';
-          this.page.identifier = '2017/10/22/mongodb/';
-          this.page.title = 'mongodb学习';
+          this.page.url = 'http://yoursite.com/2017/10/24/security/';
+          this.page.identifier = '2017/10/24/security/';
+          this.page.title = '密码学复习笔记之数学基础';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://ybx.disqus.com/embed.js';
@@ -849,6 +779,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
