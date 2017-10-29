@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-10-24T14:39:58.143Z</updated>
+  <updated>2017-10-29T14:23:01.951Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>密码学复习笔记之数论</title>
+    <link href="http://yoursite.com/2017/10/29/security2/"/>
+    <id>http://yoursite.com/2017/10/29/security2/</id>
+    <published>2017-10-28T16:00:00.000Z</published>
+    <updated>2017-10-29T14:23:01.951Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a><h2 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h2><p>若（a，n）=1,则$ a^{φ(n)}=1mod n$<br>利用欧拉定理求乘法逆元<br>若φ(n)已知，则由欧拉定理可知 $a·a^{φ(n)-1}= 1 mod n $<br>$  a^{-1} = a^{φ(n)-1 }$<br><img src="/img/Euler.png" alt="Euler"><br>两个集合对应同余于模n;</p><h2 id="费马小定理"><a href="#费马小定理" class="headerlink" title="费马小定理"></a>费马小定理</h2><p>p为质数且，(a,n)=1,则有$ a^{p-1}=1mod n$<br>代入欧拉定理即可证明</p><h2 id="单变量线性同余"><a href="#单变量线性同余" class="headerlink" title="单变量线性同余"></a>单变量线性同余</h2><p>定理：令 a, b, n 为整数，且a&gt;0, gcd(a, n)=d<br>(1)若 d不能整除b, 则ax=b mod n 无解<br>(2)若 d能整除b, 记做d|b, 则ax=b mod n 有d个解</p><p>ax = b mod n的求解过程：</p><blockquote><p>1.利用欧几里德算法求出d=(a, n)，若d 不能整除b, 则无解。<br>2.若d能整除b, 则令：a’=a/d,b’=b/d,n’=n/d;<br>因为 (a’, n’)=1,  a’x’ =b’ mod n’ 有唯一解，假设此解为x0<br>利用欧几里德算法求出a’模n’的乘法逆元(a’)-1, x’= (a’)-1 b’ mod n’<br>x0 = x’ mod n<br>令x= x0 +(n/d)t mod n, t=1,2, …, d-1, 即可求出剩下的d-1个解      </p></blockquote><p>先求a,n 的最大公因数d，d即为解的个数，然后式子两边约去d，求出第一个x值</p><h2 id="中国剩余定理"><a href="#中国剩余定理" class="headerlink" title="中国剩余定理"></a>中国剩余定理</h2><blockquote><p>韓信點兵問題：「今有物不知其數，三三數之剩二，五五數之剩三，七七數之剩二，問物幾何？」～(孫武 孫子算經)</p></blockquote><p><img src="/img/CRT.png" alt="CRT"></p><blockquote><p>三人同行七十稀<br>      五樹梅花廿一枝<br>      七子團圓正半月<br>      除百零五便得知。」<br>                    ～(程大位 算法統宗(1593))</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;欧拉定理&quot;&gt;&lt;a href=&quot;#欧拉定理&quot; class=&quot;headerlink&quot; title=&quot;欧拉定理&quot;&gt;&lt;/a&gt;欧拉定理&lt;/h2&gt;&lt;p&gt;若（a，n）=1,则$ a^{φ(n)}=1mod n$&lt;br&gt;利用欧拉定理求乘法逆元&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="security" scheme="http://yoursite.com/tags/security/"/>
+    
+  </entry>
+  
+  <entry>
     <title>密码学复习笔记之数学基础</title>
     <link href="http://yoursite.com/2017/10/24/security/"/>
     <id>http://yoursite.com/2017/10/24/security/</id>
-    <published>2017-10-24T08:36:00.000Z</published>
-    <updated>2017-10-24T14:39:58.143Z</updated>
+    <published>2017-10-23T16:00:00.000Z</published>
+    <updated>2017-10-27T09:02:06.502Z</updated>
     
     <content type="html"><![CDATA[<p><img src="/img/cover.jpg" alt=""><br><a id="more"></a></p><h2 id="Euclid算法—“辗转相除法”"><a href="#Euclid算法—“辗转相除法”" class="headerlink" title="Euclid算法—“辗转相除法”"></a>Euclid算法—“辗转相除法”</h2><p>如果b|g，b|h,对于任何整数m和n，则满足b|(mg+nh).</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if c, d∈Z and c=dq+r,where q,r∈Z, then(c,d)=(d,r)</div><div class="line">proof: 1.r=c-dq, if e|c and e|d, then e|r</div><div class="line">2.c=dq+r, if e|d and e|r, then e|c</div><div class="line">=&gt;(c,d)=(d,r)</div></pre></td></tr></table></figure><p>先证明若e是c和d的因数，那么e也是d和r的因数，接着证明若e是d和r的因数，那么e也是c和d的因数，所以得c和d的公因子集合与d和r的公因子集合相等，最大公因子也相等。<br>则欧几里得算法在此基础上迭代即可</p><h2 id="同余和模运算"><a href="#同余和模运算" class="headerlink" title="同余和模运算"></a>同余和模运算</h2><p>a mod m=b, 即 a与ｂ的差是m的整数倍。 a ≡ b(mod m) </p><blockquote><p>模运算性质：<br>     令$a_1$和$a_2$为整数，OP代表操作符+、-、*，则$(a_1 OP a_2 ）mod n=[（a_1 mod n）OP（a_2 mod n)] mod n$</p></blockquote><h2 id="反复平方法"><a href="#反复平方法" class="headerlink" title="反复平方法"></a>反复平方法</h2><p>计算幂取模，将指数换算为二进制数，每个位上若为0，则对应平方，若为1，则对应平方*底数，eg：<br>计算$5^{20} mod35$ ，20 =&gt; 10100,对应$((((((1^2)·5)^2)^2)·5)^2)^2 mod35= 25$</p><h2 id="完全剩余系-amp-既约剩余系"><a href="#完全剩余系-amp-既约剩余系" class="headerlink" title="完全剩余系&amp;既约剩余系"></a>完全剩余系&amp;既约剩余系</h2><p>完全剩余系 Zn={0, 1, 2, …, n-1}(依据同余，将整数在模n中分成n类)<br>既约剩余系Zn*：在模n的完全剩余系中，所有与n互素的数形成的集合=&gt;(元素个数即为欧拉函数φ(n)对应值)</p><h2 id="乘法逆元"><a href="#乘法逆元" class="headerlink" title="乘法逆元"></a>乘法逆元</h2><p>在模n的既约剩余系中取一整数a,则必存在另一整数b（也属于此既约剩余系),使得ab=1modn,且此解唯一。此时，称b为a在模n的乘法逆元，b可表示为a-1</p><h3 id="欧几里得算法求乘法逆元"><a href="#欧几里得算法求乘法逆元" class="headerlink" title="欧几里得算法求乘法逆元"></a>欧几里得算法求乘法逆元</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">求143关于30的乘法逆元，即求x，使得143*x mod30=1 mod30，代换1</div><div class="line">143=30*4+23</div><div class="line">30=23*1+7</div><div class="line">23=7*3+2</div><div class="line">7=2*3+1                      </div><div class="line">2=1*2                        </div><div class="line">则gcd (143, 30)=1</div><div class="line">1=7-2*3              从1（互为乘法逆元最大公因子必为1）开始，逆向代换上一级余数  </div><div class="line"> =7-(23-7*3)*3       整理为两个乘式相减形式时代换上一级余数</div><div class="line"> =7*10-23*3</div><div class="line"> =(30-23)*10-23*3</div><div class="line"> =30*10-23*13</div><div class="line"> =30*10-(143-30*4)*13</div><div class="line"> =30*62-143*13            mod30</div><div class="line"> 143*(-13) ≡ 1(mod 30)  一定要把143提出来放前边，旨在凑出$143·x mod30=1$的形式</div></pre></td></tr></table></figure><p>求35在模3的乘法逆元</p><h3 id="欧拉函数求乘法逆元"><a href="#欧拉函数求乘法逆元" class="headerlink" title="欧拉函数求乘法逆元"></a>欧拉函数求乘法逆元</h3><h2 id="群环域"><a href="#群环域" class="headerlink" title="群环域"></a>群环域</h2><h3 id="群：集合上定义一种运算"><a href="#群：集合上定义一种运算" class="headerlink" title="群：集合上定义一种运算+"></a>群：集合上定义一种运算+</h3><p>(A1) 加法的封闭性：如果说a和b属于S，则a+b属于S<br>(A2) 加法的结合律：对S中的任意元素a,b,c，a+(b+c)=(a+b)+c<br>(A3) 加法单位元：R中存在一个元素e，使得对于S中的任意元素a，有a+e=e+a=a<br>(A4) 加法逆元：对于S中的任意元素a，S中一定存在一个元素-a，使得a+(-a)=(-a)+a=e<br>满足A1-A4即为群<br>(A5) 交换律：对于G中的任意元素a和b,有a+b=b+a<br>满足A1-到A5称为可交换群。<br>群G的一个生成元素g的幂次构成G群，即G={e，g，g2 ，…，gn}则称G为循环群。<br>如果一个群的元素是有限的，则该群称为有限群，且群的阶等于群中元素的个数；否则称为无限群</p><h3 id="环：集合上定义两种运算"><a href="#环：集合上定义两种运算" class="headerlink" title="环：集合上定义两种运算"></a>环：集合上定义两种运算</h3><p>非空集合R中，若定义了两种代数运算加和乘，且满足：<br>(M1) 乘法的封闭性:如果a和b属于R，则ab属于R<br>(M2) 乘法的结合率：对于R中的任意元素a,b,c，有a(bc)=(ab)c<br>(M3) 分配律：对于R中的任意元素a,b,c，有a(b+c)=ab+ac和(a+b)c=ac+bc</p><p>(M4) 乘法交换律:对于R中的任意元素a和b，ab=ba</p><p>(M5) 乘法单位元：对于F中的任意元素a，在F中存在一个元素i,使得ai=ia=a<br>(M6) 无零因子：对于F中的元素a,b，若ab=0，则有a=0或b=0<br>[A1-M6]：整环<br>(M7)乘法逆元：如果a属于F,且a不为0，则F中存在一个元素$a^{-1}$, 使得$a·a^{-1}=a^{-1}·a=1$<br>[A1-M7]：域 多一个乘法逆元</p><h2 id="多项式运算"><a href="#多项式运算" class="headerlink" title="多项式运算"></a>多项式运算</h2><h3 id="系数在-Z-p-上的运算"><a href="#系数在-Z-p-上的运算" class="headerlink" title="系数在$ Z_p $上的运算"></a>系数在$ Z_p $上的运算</h3><p>系数模上p即可</p><h3 id="系数在-GF-2-n-中的运算"><a href="#系数在-GF-2-n-中的运算" class="headerlink" title="系数在$ GF(2^n) $中的运算"></a>系数在$ GF(2^n) $中的运算</h3><h4 id="加法"><a href="#加法" class="headerlink" title="加法"></a>加法</h4><p>$(x^2+1) + (x^2+x+1) = x $<br>$ 101 XOR 111 = 010_2$</p><h4 id="乘法"><a href="#乘法" class="headerlink" title="乘法"></a>乘法</h4><p>$(x+1)·(x^2+1)  = x^3+x^2+x+1 $<br> $011·101 = 011 XOR 101 = 1111_2 $</p><h4 id="除法"><a href="#除法" class="headerlink" title="除法"></a>除法</h4><p> $(x^3+x^2+x+1 ) mod (x^3+x+1) = 1·(x^3+x+1) + (x^2) = x^2$<br> $1111 mod 1011 = 1111 XOR 1011 = 0100_2$</p><p>如果乘法运算的结果是次数大于n-1的多项式，那么必须将其除以某个次数为n的既约多项式m(x)并取余式</p><p>例题 计算多项式的乘法逆元</p>]]></content>
     
