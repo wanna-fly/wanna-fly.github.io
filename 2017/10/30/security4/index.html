@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="security," />
 
 
 
@@ -81,16 +81,18 @@
 
 
 
-<meta name="description" content="请原谅我多情的打扰">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ybx&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="问题的提出1.密钥管理量的困难，传统密钥n个用户需要C(n,2)=n(n-1)/2个密钥2.数字签名的问题，传统加密算法无法实现抗抵赖3.密钥必须通过安全信道分配，如物理硬件 公钥密码简介公开密钥算法是非对称算法，即密钥分为公钥和私钥，因此称双密钥体制，其中公钥可以公开，因此也称公钥算法，基于数学函数而不是代替和换位 公钥密码的应用1.加密、解密2.数字签名3.密钥交换 加密原理任何人向B发送信">
+<meta name="keywords" content="security">
+<meta property="og:type" content="article">
+<meta property="og:title" content="密码学复习笔记之非对称密码">
+<meta property="og:url" content="http://yoursite.com/2017/10/30/security4/index.html">
 <meta property="og:site_name" content="ybx&#39;s Blog">
-<meta property="og:description" content="请原谅我多情的打扰">
+<meta property="og:description" content="问题的提出1.密钥管理量的困难，传统密钥n个用户需要C(n,2)=n(n-1)/2个密钥2.数字签名的问题，传统加密算法无法实现抗抵赖3.密钥必须通过安全信道分配，如物理硬件 公钥密码简介公开密钥算法是非对称算法，即密钥分为公钥和私钥，因此称双密钥体制，其中公钥可以公开，因此也称公钥算法，基于数学函数而不是代替和换位 公钥密码的应用1.加密、解密2.数字签名3.密钥交换 加密原理任何人向B发送信">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-30T14:23:00.966Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ybx&#39;s Blog">
-<meta name="twitter:description" content="请原谅我多情的打扰">
+<meta name="twitter:title" content="密码学复习笔记之非对称密码">
+<meta name="twitter:description" content="问题的提出1.密钥管理量的困难，传统密钥n个用户需要C(n,2)=n(n-1)/2个密钥2.数字签名的问题，传统加密算法无法实现抗抵赖3.密钥必须通过安全信道分配，如物理硬件 公钥密码简介公开密钥算法是非对称算法，即密钥分为公钥和私钥，因此称双密钥体制，其中公钥可以公开，因此也称公钥算法，基于数学函数而不是代替和换位 公钥密码的应用1.加密、解密2.数字签名3.密钥交换 加密原理任何人向B发送信">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/30/security4/"/>
 
 
 
 
 
-  <title>ybx's Blog</title>
+  <title>密码学复习笔记之非对称密码 | ybx's Blog</title>
   
 
 
@@ -145,8 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -229,158 +230,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/31/security5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanna-fly">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ybx's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/31/security5/" itemprop="url">密码学复习笔记之消息认证与数字签名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-31T00:00:00+08:00">
-                2017-10-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/10/31/security5/" class="leancloud_visitors" data-flag-title="密码学复习笔记之消息认证与数字签名">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-<h2 id="认证"><a href="#认证" class="headerlink" title="认证"></a>认证</h2><p>消息认证确保收到的数据确实和发送时的一样(即没有修改、插入、删除或重放)，且发送方声称的身份是真实有效的<br>三种消息认证的方法<br>1.消息加密<br>2.消息认证码（MAC）<br>3.哈希函数</p>
-<h3 id="消息加密"><a href="#消息加密" class="headerlink" title="消息加密"></a>消息加密</h3><p>消息加密本身提供了一种认证手段</p>
-<h4 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h4><p>接收方可以确信消息是由发送方产生的，因为除了接收方以外只有发送方拥有加密密钥，产生出用此密钥可以解密的密文</p>
-<blockquote>
-<p>解决解密所得消息是否具有可读性的问题:<br>要求明文具有某种易于识别的结构，如在加密前对每个消息附加一个帧校验序列FCS<br>FCS和加密函数执行的顺序很重要</p>
-</blockquote>
-<h4 id="公钥加密作为认证手段"><a href="#公钥加密作为认证手段" class="headerlink" title="公钥加密作为认证手段"></a>公钥加密作为认证手段</h4><p>若要提供认证，发送方用自己的私钥对消息加密，接收方用发送方的公钥解密(验证)，就提供了认证功能。<br>如果发送方用私钥加密消息，再用接收方的公钥加密，就实现了既保密又认证的通信<br>既保密又认证的通信的代价是需要执行四次复杂的公钥算法而不是两次。</p>
-<h3 id="消息认证码MAC"><a href="#消息认证码MAC" class="headerlink" title="消息认证码MAC"></a>消息认证码MAC</h3><p>使用密钥产生短小的定长数据分组，即所谓的密码检验MAC，将它附加在报文中。通信双方A和B共享密钥K，报文从A发往B，A计算MAC=CK(M), 附在报文后发给B。B对接收到的报文重新计算MAC，并与接收到的MAC比较</p>
-<blockquote>
-<p>MAC加密所得的消息校验和$ MAC = C_K(M)$<br>使用一个秘密密钥K，浓缩一个变长的消息M，产生一个固定长度的认证码</p>
-</blockquote>
-<p>MAC不提供数字签名，因为双方共享密钥。</p>
-<h3 id="散列函数Hash"><a href="#散列函数Hash" class="headerlink" title="散列函数Hash"></a>散列函数Hash</h3><p>一个散列函数以变长的报文M作为输入，产生定长的散列码H(M)，作为输出，亦称作报文摘要Message Digest. 散列码是报文所有比特的函数值，具有差错检测能力，报文任意一比特的改变都将引起散列码的改变</p>
-<h2 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h2><p>数字签名与消息认证的区别<br>消息认证是使消息接收方验证消息发送者发送的内容有无被修改过，对防止第三者破坏足够，但收发双方有利害冲突时就无法解决纷争，需要更严格的手段，即数字签名。</p>
-<h3 id="直接数字签名"><a href="#直接数字签名" class="headerlink" title="直接数字签名"></a>直接数字签名</h3><p>直接数字签名仅涉及通信方(信源、信宿) ，假定信宿知道信源的公开密钥，数字签名通过信源对整个报文用私有密钥加密，或对报文的摘要加密来实现，通常先签名，然后对消息和签名一起加密，安全性依赖于信源私有密钥的安全性（发送方要抵赖发送某一消息时，可能会声称其私有密钥丢失或被窃，从而他人伪造了他的签名）</p>
-<h3 id="仲裁数字签名"><a href="#仲裁数字签名" class="headerlink" title="仲裁数字签名"></a>仲裁数字签名</h3><p>涉及到一个仲裁方(arbiter A)，签名方的签名报文首先送给仲裁者，仲裁者对报文和签名进行测试以检验出处和内容，然后注上日期和仲裁说明后发给接收方，要求仲裁方在一定程度上是可以信任的，可以用对称密码或公开密钥密码实现，仲裁方可以知道消息，也可以不知道消息</p>
-<h3 id="Elgamal"><a href="#Elgamal" class="headerlink" title="Elgamal"></a>Elgamal</h3><h4 id="ELgamal加密方案"><a href="#ELgamal加密方案" class="headerlink" title="ELgamal加密方案"></a>ELgamal加密方案</h4><p>假定A和B互相通信, 共享大素数p, 本原元素α<br>    0&lt;= m &lt;= p-1, gcd(α, p) = 1, A和B各有自己的秘钥xA和xB<br>加密:<br>A选择k∈[0, p-1], k的作用即为xA, A访问公共区域找到B的公开密钥$Y^B = α^{x_B} mod p$, 计算：<br>$K = (Y^B)k mod p$，即$K = α^{x_B}k mod p$<br>$c1 = α^k mod p$<br>$c2 = m^K mod p$<br>密文即为 (c1, c2)<br>解密:<br>B首先恢复K：$K = c1^{x_B} mod p = α^{kx_B} mod p$<br>然后恢复m：$m = c_2/K mod p = c_2K^{-1} mod p$</p>
-<h4 id="签名方案以及验证"><a href="#签名方案以及验证" class="headerlink" title="签名方案以及验证"></a>签名方案以及验证</h4><p>公钥：p:素数， g&lt;p, g是p的原根，$y=g^x (mod p)$<br>私钥：x&lt;p-1<br>签名：k:随机选取, k属于[1,p-1] 且k与p-1互素，<br>a（签名）=$g^k mod p$<br>b（签名）满足  M = (xa+kb) mod ( p-1)<br>(即有：$b = ( M-xa)k^{-1} mod (p-1) $   )<br>验证：如果 $y^a·a^b (mod p ) = g^M (mod p)$，则签名有效</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
 
   
 
@@ -410,9 +262,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/30/security4/" itemprop="url">密码学复习笔记之非对称密码</a></h1>
+          <h1 class="post-title" itemprop="name headline">密码学复习笔记之非对称密码</h1>
         
 
         <div class="post-meta">
@@ -473,9 +323,7 @@
       
 
       
-        
-          
-            <a id="more"></a>
+        <a id="more"></a>
 <h2 id="问题的提出"><a href="#问题的提出" class="headerlink" title="问题的提出"></a>问题的提出</h2><p>1.密钥管理量的困难，传统密钥n个用户需要C(n,2)=n(n-1)/2个密钥<br>2.数字签名的问题，传统加密算法无法实现抗抵赖<br>3.密钥必须通过安全信道分配，如物理硬件</p>
 <h2 id="公钥密码简介"><a href="#公钥密码简介" class="headerlink" title="公钥密码简介"></a>公钥密码简介</h2><p>公开密钥算法是非对称算法，即密钥分为公钥和私钥，因此称双密钥体制，其中公钥可以公开，因此也称公钥算法，基于数学函数而不是代替和换位</p>
 <h3 id="公钥密码的应用"><a href="#公钥密码的应用" class="headerlink" title="公钥密码的应用"></a>公钥密码的应用</h3><p>1.加密、解密<br>2.数字签名<br>3.密钥交换</p>
@@ -504,8 +352,6 @@
 </blockquote>
 <h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h3><h3 id="攻击"><a href="#攻击" class="headerlink" title="攻击"></a>攻击</h3><p>1.已知φ(n)和N，求p和q<br>2.已知e，已经密文c1，c2，c3，以及N1，N2，N3，求明文（中国剩余定理）<br>三种攻击 RSA的方法:<br>1.强力穷举密钥<br>2.时间攻击：依赖解密算法的运行时间，利用CPU处理某些特殊的模乘比较慢的规律来确定每一位指数<br>3.数学攻击 ：实质上是对两个素数乘积的分解<br>密码分析者攻击RSA体制的关键点在于如何分解n<br>若分解成功使n=pq，则可以算出φ(n)＝（p-1)(q-1)，然后由公开的e，解出秘密的d<br>建议选择p和q大约是100位的十进制素数，模n的长度要求至少是512比特，为了提高加密速度，通常取e为特定的小整数<br>速度一直是RSA的缺陷。一般来说只用于少量数据加密。</p>
 
-          
-        
       
     </div>
     
@@ -520,426 +366,40 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/29/security3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanna-fly">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ybx's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/29/security3/" itemprop="url">密码学复习笔记之对称密码</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-29T00:00:00+08:00">
-                2017-10-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/security/" rel="tag"># security</a>
           
-            
-          
-
-          
-          
-             <span id="/2017/10/29/security3/" class="leancloud_visitors" data-flag-title="密码学复习笔记之对称密码">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
       
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/29/security2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanna-fly">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ybx's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/29/security2/" itemprop="url">密码学复习笔记之数论</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-29T00:00:00+08:00">
-                2017-10-29
-              </time>
+              <a href="/2017/10/29/security3/" rel="next" title="密码学复习笔记之对称密码">
+                <i class="fa fa-chevron-left"></i> 密码学复习笔记之对称密码
+              </a>
             
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/10/29/security2/" class="leancloud_visitors" data-flag-title="密码学复习笔记之数论">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-<h2 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h2><p>若（a，n）=1,则$ a^{φ(n)}=1mod n$<br>利用欧拉定理求乘法逆元<br>若φ(n)已知，则由欧拉定理可知 $a·a^{φ(n)-1}= 1 mod n $<br>$  a^{-1} = a^{φ(n)-1 }$<br><img src="/img/Euler.png" alt="Euler"><br>两个集合对应同余于模n;</p>
-<h2 id="费马小定理"><a href="#费马小定理" class="headerlink" title="费马小定理"></a>费马小定理</h2><p>p为质数且，(a,n)=1,则有$ a^{p-1}=1mod n$<br>代入欧拉定理即可证明</p>
-<h2 id="单变量线性同余"><a href="#单变量线性同余" class="headerlink" title="单变量线性同余"></a>单变量线性同余</h2><p>定理：令 a, b, n 为整数，且a&gt;0, gcd(a, n)=d<br>(1)若 d不能整除b, 则ax=b mod n 无解<br>(2)若 d能整除b, 记做d|b, 则ax=b mod n 有d个解</p>
-<p>ax = b mod n的求解过程：</p>
-<blockquote>
-<p>1.利用欧几里德算法求出d=(a, n)，若d 不能整除b, 则无解。<br>2.若d能整除b, 则令：a’=a/d,b’=b/d,n’=n/d;<br>因为 (a’, n’)=1,  a’x’ =b’ mod n’ 有唯一解，假设此解为x0<br>利用欧几里德算法求出a’模n’的乘法逆元(a’)-1, x’= (a’)-1 b’ mod n’<br>x0 = x’ mod n<br>令x= x0 +(n/d)t mod n, t=1,2, …, d-1, 即可求出剩下的d-1个解      </p>
-</blockquote>
-<p>先求a,n 的最大公因数d，d即为解的个数，然后式子两边约去d，求出第一个x值</p>
-<h2 id="中国剩余定理"><a href="#中国剩余定理" class="headerlink" title="中国剩余定理"></a>中国剩余定理</h2><blockquote>
-<p>韓信點兵問題：「今有物不知其數，三三數之剩二，五五數之剩三，七七數之剩二，問物幾何？」～(孫武 孫子算經)</p>
-</blockquote>
-<p><img src="/img/CRT.png" alt="CRT"></p>
-<blockquote>
-<p>三人同行七十稀<br>      五樹梅花廿一枝<br>      七子團圓正半月<br>      除百零五便得知。」<br>                    ～(程大位 算法統宗(1593))</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/24/security/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanna-fly">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ybx's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/24/security/" itemprop="url">密码学复习笔记之数学基础</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-24T00:00:00+08:00">
-                2017-10-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/10/24/security/" class="leancloud_visitors" data-flag-title="密码学复习笔记之数学基础">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="/img/cover.jpg" alt=""><br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/24/security/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-
-    <footer class="post-footer">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/31/security5/" rel="prev" title="密码学复习笔记之消息认证与数字签名">
+                密码学复习笔记之消息认证与数字签名 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
 
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -949,14 +409,11 @@
   </article>
 
 
-    
-  </section>
 
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -964,6 +421,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -984,8 +445,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1078,6 +548,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题的提出"><span class="nav-number">1.</span> <span class="nav-text">问题的提出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#公钥密码简介"><span class="nav-number">2.</span> <span class="nav-text">公钥密码简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#公钥密码的应用"><span class="nav-number">2.1.</span> <span class="nav-text">公钥密码的应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加密原理"><span class="nav-number">2.2.</span> <span class="nav-text">加密原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#签名认证原理"><span class="nav-number">2.3.</span> <span class="nav-text">签名认证原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保密-鉴别"><span class="nav-number">2.4.</span> <span class="nav-text">保密+鉴别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单向陷门函数"><span class="nav-number">3.</span> <span class="nav-text">单向陷门函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RSA算法"><span class="nav-number">4.</span> <span class="nav-text">RSA算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现"><span class="nav-number">4.1.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加解密"><span class="nav-number">4.2.</span> <span class="nav-text">加解密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#证明"><span class="nav-number">4.3.</span> <span class="nav-text">证明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#攻击"><span class="nav-number">4.4.</span> <span class="nav-text">攻击</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1218,6 +704,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 

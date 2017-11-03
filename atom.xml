@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-10-29T14:23:01.951Z</updated>
+  <updated>2017-10-31T06:37:58.259Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,78 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>密码学复习笔记之消息认证与数字签名</title>
+    <link href="http://yoursite.com/2017/10/31/security5/"/>
+    <id>http://yoursite.com/2017/10/31/security5/</id>
+    <published>2017-10-30T16:00:00.000Z</published>
+    <updated>2017-10-31T06:37:58.259Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a><h2 id="认证"><a href="#认证" class="headerlink" title="认证"></a>认证</h2><p>消息认证确保收到的数据确实和发送时的一样(即没有修改、插入、删除或重放)，且发送方声称的身份是真实有效的<br>三种消息认证的方法<br>1.消息加密<br>2.消息认证码（MAC）<br>3.哈希函数</p><h3 id="消息加密"><a href="#消息加密" class="headerlink" title="消息加密"></a>消息加密</h3><p>消息加密本身提供了一种认证手段</p><h4 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h4><p>接收方可以确信消息是由发送方产生的，因为除了接收方以外只有发送方拥有加密密钥，产生出用此密钥可以解密的密文</p><blockquote><p>解决解密所得消息是否具有可读性的问题:<br>要求明文具有某种易于识别的结构，如在加密前对每个消息附加一个帧校验序列FCS<br>FCS和加密函数执行的顺序很重要</p></blockquote><h4 id="公钥加密作为认证手段"><a href="#公钥加密作为认证手段" class="headerlink" title="公钥加密作为认证手段"></a>公钥加密作为认证手段</h4><p>若要提供认证，发送方用自己的私钥对消息加密，接收方用发送方的公钥解密(验证)，就提供了认证功能。<br>如果发送方用私钥加密消息，再用接收方的公钥加密，就实现了既保密又认证的通信<br>既保密又认证的通信的代价是需要执行四次复杂的公钥算法而不是两次。</p><h3 id="消息认证码MAC"><a href="#消息认证码MAC" class="headerlink" title="消息认证码MAC"></a>消息认证码MAC</h3><p>使用密钥产生短小的定长数据分组，即所谓的密码检验MAC，将它附加在报文中。通信双方A和B共享密钥K，报文从A发往B，A计算MAC=CK(M), 附在报文后发给B。B对接收到的报文重新计算MAC，并与接收到的MAC比较</p><blockquote><p>MAC加密所得的消息校验和$ MAC = C_K(M)$<br>使用一个秘密密钥K，浓缩一个变长的消息M，产生一个固定长度的认证码</p></blockquote><p>MAC不提供数字签名，因为双方共享密钥。</p><h3 id="散列函数Hash"><a href="#散列函数Hash" class="headerlink" title="散列函数Hash"></a>散列函数Hash</h3><p>一个散列函数以变长的报文M作为输入，产生定长的散列码H(M)，作为输出，亦称作报文摘要Message Digest. 散列码是报文所有比特的函数值，具有差错检测能力，报文任意一比特的改变都将引起散列码的改变</p><h2 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h2><p>数字签名与消息认证的区别<br>消息认证是使消息接收方验证消息发送者发送的内容有无被修改过，对防止第三者破坏足够，但收发双方有利害冲突时就无法解决纷争，需要更严格的手段，即数字签名。</p><h3 id="直接数字签名"><a href="#直接数字签名" class="headerlink" title="直接数字签名"></a>直接数字签名</h3><p>直接数字签名仅涉及通信方(信源、信宿) ，假定信宿知道信源的公开密钥，数字签名通过信源对整个报文用私有密钥加密，或对报文的摘要加密来实现，通常先签名，然后对消息和签名一起加密，安全性依赖于信源私有密钥的安全性（发送方要抵赖发送某一消息时，可能会声称其私有密钥丢失或被窃，从而他人伪造了他的签名）</p><h3 id="仲裁数字签名"><a href="#仲裁数字签名" class="headerlink" title="仲裁数字签名"></a>仲裁数字签名</h3><p>涉及到一个仲裁方(arbiter A)，签名方的签名报文首先送给仲裁者，仲裁者对报文和签名进行测试以检验出处和内容，然后注上日期和仲裁说明后发给接收方，要求仲裁方在一定程度上是可以信任的，可以用对称密码或公开密钥密码实现，仲裁方可以知道消息，也可以不知道消息</p><h3 id="Elgamal"><a href="#Elgamal" class="headerlink" title="Elgamal"></a>Elgamal</h3><h4 id="ELgamal加密方案"><a href="#ELgamal加密方案" class="headerlink" title="ELgamal加密方案"></a>ELgamal加密方案</h4><p>假定A和B互相通信, 共享大素数p, 本原元素α<br>    0&lt;= m &lt;= p-1, gcd(α, p) = 1, A和B各有自己的秘钥xA和xB<br>加密:<br>A选择k∈[0, p-1], k的作用即为xA, A访问公共区域找到B的公开密钥$Y^B = α^{x_B} mod p$, 计算：<br>$K = (Y^B)k mod p$，即$K = α^{x_B}k mod p$<br>$c1 = α^k mod p$<br>$c2 = m^K mod p$<br>密文即为 (c1, c2)<br>解密:<br>B首先恢复K：$K = c1^{x_B} mod p = α^{kx_B} mod p$<br>然后恢复m：$m = c_2/K mod p = c_2K^{-1} mod p$</p><h4 id="签名方案以及验证"><a href="#签名方案以及验证" class="headerlink" title="签名方案以及验证"></a>签名方案以及验证</h4><p>公钥：p:素数， g&lt;p, g是p的原根，$y=g^x (mod p)$<br>私钥：x&lt;p-1<br>签名：k:随机选取, k属于[1,p-1] 且k与p-1互素，<br>a（签名）=$g^k mod p$<br>b（签名）满足  M = (xa+kb) mod ( p-1)<br>(即有：$b = ( M-xa)k^{-1} mod (p-1) $   )<br>验证：如果 $y^a·a^b (mod p ) = g^M (mod p)$，则签名有效</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;认证&quot;&gt;&lt;a href=&quot;#认证&quot; class=&quot;headerlink&quot; title=&quot;认证&quot;&gt;&lt;/a&gt;认证&lt;/h2&gt;&lt;p&gt;消息认证确保收到的数据确实和发送时的一样(即没有修改、插入、删除或重放)，且发送方声称的身份是真实有效的
+      
+    
+    </summary>
+    
+    
+      <category term="security" scheme="http://yoursite.com/tags/security/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>密码学复习笔记之非对称密码</title>
+    <link href="http://yoursite.com/2017/10/30/security4/"/>
+    <id>http://yoursite.com/2017/10/30/security4/</id>
+    <published>2017-10-29T16:00:00.000Z</published>
+    <updated>2017-10-30T14:23:00.966Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a><h2 id="问题的提出"><a href="#问题的提出" class="headerlink" title="问题的提出"></a>问题的提出</h2><p>1.密钥管理量的困难，传统密钥n个用户需要C(n,2)=n(n-1)/2个密钥<br>2.数字签名的问题，传统加密算法无法实现抗抵赖<br>3.密钥必须通过安全信道分配，如物理硬件</p><h2 id="公钥密码简介"><a href="#公钥密码简介" class="headerlink" title="公钥密码简介"></a>公钥密码简介</h2><p>公开密钥算法是非对称算法，即密钥分为公钥和私钥，因此称双密钥体制，其中公钥可以公开，因此也称公钥算法，基于数学函数而不是代替和换位</p><h3 id="公钥密码的应用"><a href="#公钥密码的应用" class="headerlink" title="公钥密码的应用"></a>公钥密码的应用</h3><p>1.加密、解密<br>2.数字签名<br>3.密钥交换</p><h3 id="加密原理"><a href="#加密原理" class="headerlink" title="加密原理"></a>加密原理</h3><p>任何人向B发送信息都可以使用同一个密钥(B的公钥)加密，没有其他人可以得到B 的私钥，所以只有B可以用自己的私钥解密</p><h3 id="签名认证原理"><a href="#签名认证原理" class="headerlink" title="签名认证原理"></a>签名认证原理</h3><p>A向B发送消息X，A的公钥为KUa，私钥为KRa<br>加密： $Y = E<em>{KRa}(X) $（数字签名）<br>解密： $X = D</em>{KUa}(Y) $</p><blockquote><p>注意：不能保证消息的保密性</p></blockquote><h3 id="保密-鉴别"><a href="#保密-鉴别" class="headerlink" title="保密+鉴别"></a>保密+鉴别</h3><p>A–&gt;B:$ Z=E_{KU<em>b}(E</em>{KR<em>a}(X))$<br>B:$ E</em>{KU<em>a}(E</em>{KR_b}(Z))=X$</p><blockquote><p>公开密钥很慢，多用在密钥管理和数字签名</p></blockquote><h2 id="单向陷门函数"><a href="#单向陷门函数" class="headerlink" title="单向陷门函数"></a>单向陷门函数</h2><p>寻找合适的单向陷门函数是公钥密码体制应用的关键</p><blockquote><p>满足下列条件的函数f：<br>        (1)  给定x，计算y=f(x)是容易的<br>        (2)  给定y,  计算x使y=f(x)是困难的<br>        (3)  存在z，已知z 时, 对给定的任何y，若相应的x存 在，则计算x使y=f(x)是容易的<br>仅满足(1)、(2)两条的称为单向函数；第(3)条称为陷门性，z 称为陷门信息</p></blockquote><h2 id="RSA算法"><a href="#RSA算法" class="headerlink" title="RSA算法"></a>RSA算法</h2><p>RSA的安全性是基于大整数素因子分解的困难性</p><h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>实现的步骤如下：Bob为实现者</p><blockquote><p> (1)  Bob寻找出两个大素数p和q<br>    (2)  Bob计算出n=pq 和φ(n)=(p-1)(q-1)<br>    (3)  Bob选择一个随机数e (0&lt;e&lt; φ(n))，满足(e,φ(n))=1<br>    (4)  Bob使用辗转相除法计算$d=e^{-1}(modφ(n))$，即ed=1(mod(p-1)(q-1))<br>    (5) （e,n)作为公钥.<br>   （6）(d,n)或者d作为私钥.</p></blockquote><p>密码分析者攻击RSA体制的关键点在于如何分解n</p><h3 id="加解密"><a href="#加解密" class="headerlink" title="加解密"></a>加解密</h3><p>参数T={N}；私钥SK=D；公钥PK=E；</p><blockquote><p>设：明文M，密文C，M&lt;N,那么：<br> 用公钥作业：$M^E mod N = C $(加密)<br> 用私钥作业：$C^D mod N = M$（解密）</p></blockquote><h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h3><h3 id="攻击"><a href="#攻击" class="headerlink" title="攻击"></a>攻击</h3><p>1.已知φ(n)和N，求p和q<br>2.已知e，已经密文c1，c2，c3，以及N1，N2，N3，求明文（中国剩余定理）<br>三种攻击 RSA的方法:<br>1.强力穷举密钥<br>2.时间攻击：依赖解密算法的运行时间，利用CPU处理某些特殊的模乘比较慢的规律来确定每一位指数<br>3.数学攻击 ：实质上是对两个素数乘积的分解<br>密码分析者攻击RSA体制的关键点在于如何分解n<br>若分解成功使n=pq，则可以算出φ(n)＝（p-1)(q-1)，然后由公开的e，解出秘密的d<br>建议选择p和q大约是100位的十进制素数，模n的长度要求至少是512比特，为了提高加密速度，通常取e为特定的小整数<br>速度一直是RSA的缺陷。一般来说只用于少量数据加密。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;问题的提出&quot;&gt;&lt;a href=&quot;#问题的提出&quot; class=&quot;headerlink&quot; title=&quot;问题的提出&quot;&gt;&lt;/a&gt;问题的提出&lt;/h2&gt;&lt;p&gt;1.密钥管理量的困难，传统密钥n个用户需要C(n,2)=n(n-1)/2个密钥&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="security" scheme="http://yoursite.com/tags/security/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>密码学复习笔记之对称密码</title>
+    <link href="http://yoursite.com/2017/10/29/security3/"/>
+    <id>http://yoursite.com/2017/10/29/security3/</id>
+    <published>2017-10-28T16:00:00.000Z</published>
+    <updated>2017-10-30T10:43:31.507Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="security" scheme="http://yoursite.com/tags/security/"/>
+    
+  </entry>
   
   <entry>
     <title>密码学复习笔记之数论</title>
