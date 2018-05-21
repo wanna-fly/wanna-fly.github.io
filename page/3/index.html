@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Note," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -81,18 +81,16 @@
 
 
 
-<meta name="description" content="概念解析   SQL术语/概念 MongoDB术语/概念 解释/说明     table collection 数据库表/集合   row document 数据记录行/文档   column field 数据字段/域    增删改查1use DATABASE_NAME">
-<meta name="keywords" content="Note">
-<meta property="og:type" content="article">
-<meta property="og:title" content="mongodb学习">
-<meta property="og:url" content="http://yoursite.com/2017/10/22/mongodb/index.html">
+<meta name="description" content="请原谅我多情的打扰">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ybx&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
 <meta property="og:site_name" content="ybx&#39;s Blog">
-<meta property="og:description" content="概念解析   SQL术语/概念 MongoDB术语/概念 解释/说明     table collection 数据库表/集合   row document 数据记录行/文档   column field 数据字段/域    增删改查1use DATABASE_NAME">
+<meta property="og:description" content="请原谅我多情的打扰">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-22T13:36:56.818Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mongodb学习">
-<meta name="twitter:description" content="概念解析   SQL术语/概念 MongoDB术语/概念 解释/说明     table collection 数据库表/集合   row document 数据记录行/文档   column field 数据字段/域    增删改查1use DATABASE_NAME">
+<meta name="twitter:title" content="ybx&#39;s Blog">
+<meta name="twitter:description" content="请原谅我多情的打扰">
 
 
 
@@ -122,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/22/mongodb/"/>
+  <link rel="canonical" href="http://yoursite.com/page/3/"/>
 
 
 
 
 
-  <title>mongodb学习 | ybx's Blog</title>
+  <title>ybx's Blog</title>
   
 
 
@@ -147,7 +145,8 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -230,9 +229,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -245,7 +244,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/22/mongodb/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/18/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanna-fly">
@@ -262,7 +261,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">mongodb学习</h1>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/18/hello-world/" itemprop="url">helloworld</a></h1>
         
 
         <div class="post-meta">
@@ -274,8 +275,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-22T20:58:23+08:00">
-                2017-10-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-18T20:00:00+08:00">
+                2017-10-18
               </time>
             
 
@@ -292,7 +293,7 @@
 
           
           
-             <span id="/2017/10/22/mongodb/" class="leancloud_visitors" data-flag-title="mongodb学习">
+             <span id="/2017/10/18/hello-world/" class="leancloud_visitors" data-flag-title="helloworld">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -323,95 +324,21 @@
       
 
       
-        <h2 id="概念解析"><a href="#概念解析" class="headerlink" title="概念解析"></a>概念解析</h2><table>
-<thead>
-<tr>
-<th>SQL术语/概念</th>
-<th>MongoDB术语/概念</th>
-<th>解释/说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>table</td>
-<td>collection</td>
-<td>数据库表/集合</td>
-</tr>
-<tr>
-<td>row</td>
-<td>document</td>
-<td>数据记录行/文档</td>
-</tr>
-<tr>
-<td>column</td>
-<td>field</td>
-<td>数据字段/域</td>
-</tr>
-</tbody>
-</table>
-<h2 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">use</span> DATABASE_NAME</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>如果数据库不存在，则创建数据库，否则切换到指定数据库。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.dropDatabase()</div></pre></td></tr></table></figure></p>
-<p>删除当前数据库(使用 db 命令查看当前数据库名。)</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.drop()</div></pre></td></tr></table></figure>
-<p>删除集合<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.COLLECTION_NAME.insert(document)</div></pre></td></tr></table></figure></p>
-<p>向集合中插入文档，使用 insert() 或 save() 方法。如果该集合不存在，mongoDb会自动创建该集合并插入文档<br>3.2版本后还有以下语法可用于插入文档:</p>
+        
+          <p>欢迎来到我的博客<a href="https://wannafly.xyz/" target="_blank" rel="external">https://wannafly.xyz/</a>! This is my first blog.</p>
 <blockquote>
-<p>db.collection.insertOne():向指定集合中插入一条文档数据<br>db.collection.insertMany():向指定集合中插入多条文档数据</p>
+<p>一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</p>
 </blockquote>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.col.update(&#123;'title':'MongoDB 教程'&#125;,&#123;$set:&#123;'title':'MongoDB'&#125;&#125;)</div></pre></td></tr></table></figure>
-<p>更新语句示例，如果修改多条相同的文档，需要设置 multi 参数为 true。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.col.update(&#123;'title':'MongoDB 教程'&#125;,&#123;$set:&#123;'title':'MongoDB'&#125;&#125;,&#123;multi:true&#125;)</div></pre></td></tr></table></figure></p>
-<p>save() 方法通过传入的文档来替换已有文档来更新数据<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.remove()</div></pre></td></tr></table></figure></p>
-<p>删除</p>
-<blockquote>
-<p>db.col.find().pretty()<br>pretty() 方法以格式化的方式来显示所有文档。</p>
-</blockquote>
-<p>查询键 by 值为 菜鸟教程 或键 title 值为 MongoDB 教程 的文档。</p>
-<blockquote>
-<p>db.col.find({$or:[{“by”:”菜鸟教程”},{“title”: “MongoDB 教程”}]}).pretty()</p>
-</blockquote>
-<h2 id="条件操作符"><a href="#条件操作符" class="headerlink" title="条件操作符"></a>条件操作符</h2><table>
-<thead>
-<tr>
-<th>操作符</th>
-<th>解释</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>$gt</td>
-<td>greater than</td>
-<td>&gt;</td>
-</tr>
-<tr>
-<td>$gte</td>
-<td>gt equal</td>
-<td>&gt;=</td>
-</tr>
-<tr>
-<td>$lt</td>
-<td>less than</td>
-<td>&lt;</td>
-</tr>
-<tr>
-<td>$lte</td>
-<td>lt equal</td>
-<td>&lt;=</td>
-</tr>
-<tr>
-<td>$ne</td>
-<td>not equal</td>
-<td>!=</td>
-</tr>
-<tr>
-<td>$eq</td>
-<td>equal</td>
-<td>=</td>
-</tr>
-</tbody>
-</table>
-
+<h2 id="今天搭建博客遇到的问题"><a href="#今天搭建博客遇到的问题" class="headerlink" title="今天搭建博客遇到的问题"></a>今天搭建博客遇到的问题</h2><h3 id="关于hexo配置"><a href="#关于hexo配置" class="headerlink" title="关于hexo配置"></a>关于hexo配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init</div></pre></td></tr></table></figure>
+<p>需要在空文件夹中进行初始化框架<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/18/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
     
@@ -426,40 +353,14 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Note/" rel="tag"># Note</a>
-          
-        </div>
+
+      
+
       
 
       
       
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/10/21/note2/" rel="next" title="node.js学习笔记(二)--动手实例">
-                <i class="fa fa-chevron-left"></i> node.js学习笔记(二)--动手实例
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/23/CSS1/" rel="prev" title="CSS初步学习">
-                CSS初步学习 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -469,11 +370,14 @@
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
 
 
           </div>
@@ -481,10 +385,6 @@
 
 
           
-
-  
-
-
 
         </div>
         
@@ -505,17 +405,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -608,22 +499,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念解析"><span class="nav-number">1.</span> <span class="nav-text">概念解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增删改查"><span class="nav-number">2.</span> <span class="nav-text">增删改查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件操作符"><span class="nav-number">3.</span> <span class="nav-text">条件操作符</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -764,10 +639,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
-
-
 
   
 
@@ -930,6 +801,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
