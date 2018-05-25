@@ -48,7 +48,7 @@
 				<h1 class="site-name"><a href="/" title="ybx&#39;s Blog">ybx&#39;s Blog</a></h1>
 				<h2 class="blog-motto">天空没有留下翅膀的痕迹，但我已然飞过</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -64,7 +64,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -89,7 +89,7 @@
 		<a href="/about" title="wanna-fly" target="_blank" itemprop="author">wanna-fly</a>
 		
   <p class="article-time">
-    <time datetime="2018-05-21T15:40:54.088Z" itemprop="datePublished"> 發表於 2018-05-21</time>
+    <time datetime="2018-05-21T15:40:54.088Z" itemprop="datePublished"> Published 2018-05-21</time>
     
   </p>
 </header>
@@ -97,72 +97,11 @@
         
         <h1 id="网络攻防实践课堂演示"><a href="#网络攻防实践课堂演示" class="headerlink" title="网络攻防实践课堂演示"></a>网络攻防实践课堂演示</h1><p>在虚拟机环境下，以kali系统作攻击者，win7系统作为靶机，进行内网arp攻击以及arp欺骗，实现断网，获取账密，会话劫持以及DNS欺骗。</p>
 <h2 id="arp协议"><a href="#arp协议" class="headerlink" title="arp协议"></a>arp协议</h2><p>ARP（Address Resolution Protocol），地址解析协议 ，作用是将网络层地址（例如IP地址）转换为链路层地址（即MAC地址）。在以太网协议（数据链路层）中规定，主机之间需要通过MAC地址进行通信，但是在上层协议中，网络层和运输层只关心IP地址，所以数据链路层收到上层传递的数据包中并不包含MAC地址，为了解决这个问题，需要引入ARP协议，使得主机可以根据网络层IP数据包包头中的IP地址信息来获取相应的目标MAC地址，从而构造以太网帧实现通信。</p>
-<p>工作流程：假设主机A和B在同一个网段，主机A要向主机B发送信息，流程如下</p>
-<ol>
-<li>主机A首先查看自己的ARP表查找主机B对应的ARP表项。如果找到，则直接利用ARP表中的MAC地址，对IP数据包进行帧封装，并将数据包发送给主机B。</li>
-<li>如果未找到，则缓存当前数据报文，然后以广播方式发送一个ARP请求。ARP请求报文中的发送端IP地址和发送端MAC地址为主机A的IP地址和MAC地址，目标IP地址和目标MAC地址为主机B的IP地址和全0的MAC地址。由于ARP请求报文以广播方式发送，该网段上的所有主机都可以接收到该请求，但只有被请求的主机（即主机B）会对该请求进行处理。</li>
-<li>主机B比对自己的IP地址和ARP请求报文中的目标IP地址，发现两者相同，则将ARP请求报文中的发送端（即主机A）的IP地址和MAC地址存入自己的ARP表中，之后以单播方式发送ARP响应报文给主机A，其中包含了自己的MAC地址。</li>
-<li>主机A收到ARP响应报文后，将主机B的MAC地址加入到自己的ARP表中以用于后续报文的转发，同时将IP数据包进行封装后发送出去。</li>
-</ol>
-<p>当主机A和主机B不在同一网段时，主机A就会先向网关发出ARP请求，ARP请求报文中的目标IP地址为网关的IP地址。当主机A从收到的响应报文中获得网关的MAC地址后，将报文封装并发给网关。如果网关没有主机B的ARP表项，网关会广播ARP请求，目标IP地址为主机B的IP地址，当网关从收到的响应报文中获得主机B的MAC地址后，就可以将报文发给主机B；如果网关已经有主机B的ARP表项，网关直接把报文发给主机B。</p>
-<h2 id="arp攻击原理"><a href="#arp攻击原理" class="headerlink" title="arp攻击原理"></a>arp攻击原理</h2><p>从arp的工作流程中可以看到，arp解析过程采用广播问询方式进行，并且在保存MAC-IP映射关系时并没有对其进行真实性的验证。此外ARP协议支持接收主动发送的ARP应答报文，同时ARP缓存表采用了老化机制，在一段时间内如果表中的某一行没有使用，就会被删除。因此基于以上特点可以构造arp攻击：攻击者主动向目标主机发送虚假的arp应答报文，污染目标的arp缓存表。</p>
-<p>攻击流程：</p>
-<ol>
-<li>对目标主机进行 ARP 欺骗，声称自己是网关。</li>
-<li>转发目标的 NAT 数据到网关，维持目标的外出数据。</li>
-<li>对网关进行 ARP 欺骗，声称自己是目标主机。</li>
-<li>转发网关的 NAT 数据到目标主机，维持目标的接收数据。</li>
-<li>监听劫持或者修改目标的进入和外出数据，从而实现攻击。  </li>
-</ol>
-<h2 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h2><h3 id="demo1：断网攻击"><a href="#demo1：断网攻击" class="headerlink" title="demo1：断网攻击"></a>demo1：断网攻击</h3><p>在虚拟机中开启kali以及win7系统，网络配置为NAT模式，配置二者IP地址使其在同一网段内。桥接模式下需要手动给虚拟机分配合法IP地址，此时虚拟机相当于现实局域网中的一台真实机器。NAT模式下与宿主机共享网络连接，相当于新建一个虚拟局域网，此时宿主机不可以ping通虚拟机，但虚拟机可以ping宿主机。</p>
-<p>使用namp扫描当前网段发现主机：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">namp -sP  192.168.160.0/24</div></pre></td></tr></table></figure>
-<p>查看arp缓存命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">arp -a</div></pre></td></tr></table></figure>
-<p>开启arp攻击命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">arpspoof -i eth0 -t 网关IP 目标IP//选择网卡以及目标</div></pre></td></tr></table></figure>
-<h3 id="demo2：会话劫持"><a href="#demo2：会话劫持" class="headerlink" title="demo2：会话劫持"></a>demo2：会话劫持</h3><p>攻击者不开启ip转发时，靶机会无法接入网络，如果开启转发，则此时攻击者作为网关和靶机之间的中间人转发数据包，可以通过抓包工具对数据包进行分析。linux下ip转发功能由ip_forward文件控制（需要提前设置iptables）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">find / -name ip_forward//查找位置</div><div class="line">cd /proc/sys/net/ipv4</div><div class="line">echo 1 &gt; ip_forward//写入1表示开启转发功能</div><div class="line">cat ip_forward//回显确认</div></pre></td></tr></table></figure>
-<p>此时使用driftnet即可将获得的数据包中的图片过滤并显示出来：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">driftnet -i eth0</div></pre></td></tr></table></figure>
-<p>使用ettercap工具来过滤数据包中的账号密码信息（http网站）。另外，配合sslstrip可以获取https网站密码，未成功。</p>
-<p>sslstrip原理：</p>
-<ul>
-<li>攻击者嗅探客户端数据；  　</li>
-<li>客户端向服务器端发送http请求，第三方攻击者如实转发请求；</li>
-<li>服务器端回复https链接给客户端，攻击者收到请求并将该链接剥离为http链接回复给客户端；  　　</li>
-<li>客户再次发送http请求给服务器端，攻击者将其改为https发送至服务器端；  　　</li>
-<li>客户端与攻击者就建立了一个http明文链接，攻击者与服务器端建立了https加密链接，客户端的所有信息都暴露在了攻击者的视野之下 </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ettercap -Tq -i eth0</div></pre></td></tr></table></figure>
-<p>此外，还可以通过分析数据包，使用抓取的cookie伪装受害者登陆相应网站：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">tcpdump -i eth0 -w cookie.cap//抓取数据包，也可以用wireshark</div><div class="line">ferret -r cookie.cap//使用ferret分析数据包并在root目录下生成hamster.txt</div><div class="line">hamster//开启代理服务器，代理设置为127.0.0.1,1234端口</div></pre></td></tr></table></figure>
-<p>浏览器访问127.0.0.1:1234，选择target后查看cookie，选择相应的url即可实现伪装登录。之前使用cookie一直无法访问，后来发现是自己kali系统时间不正确，浏览器会认为数据包不安全而拒绝连接，也算是一个小坑。</p>
-<h4 id="tips：kali下安装ferret踩坑记录"><a href="#tips：kali下安装ferret踩坑记录" class="headerlink" title="tips：kali下安装ferret踩坑记录"></a>tips：kali下安装ferret踩坑记录</h4><p>使用源码编译时出现编译错误，deb包安装会出现一堆未安装依赖，apt包管理器中又找不到ferret，更新源之后（阿里云，中科大以及清华）又出现hash校验和不一致无法下载的问题，最终解决方法如下：</p>
-<p>使用vim编辑/etc/apt/source.list，添加如下更新源并保存退出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">deb http://ftp.cn.debian.org/kali kali-rolling main contrib non-free</div></pre></td></tr></table></figure>
-<p> 执行如下命令，添加i386(32位)仓库，并更新列表。ferret无64位版本。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"> dpkg --add-architecture i386 &amp;&amp; apt-get update &amp;&amp; apt-get install ferret-sidejack:i386</div></pre></td></tr></table></figure>
-<p>如果使用ferret命令后未出现hamster.txt，则尝试多次抓取数据包，要等待一段时间后再停止抓包。</p>
-<h3 id="demo3：DNS欺骗"><a href="#demo3：DNS欺骗" class="headerlink" title="demo3：DNS欺骗"></a>demo3：DNS欺骗</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vim /etc/ettercap/etter.conf//更改uid gid为0，删除iptables部分的注释符</div><div class="line">vim /etc/ettercap/etter.dns//添加要进行DNS欺骗的记录</div><div class="line">vim /var/www/html/index.html//spoof后的主页</div><div class="line">/etc/init.d/apache2 start//开启apache2</div></pre></td></tr></table></figure>
-<p>使用如下命令开启DNS欺骗，-T表示字符界面，q表示安静模式，-P表示插件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ettercap -Tq -i eth0 -P dns_spoof /// ///</div></pre></td></tr></table></figure>
-<p>目标主机打开相应的网站就会被欺骗访问kali主机上的apache服务器，从而实现钓鱼等攻击。tips：这些知名网站服务器很多，域名前缀不同，最好用通配符添加dns记录，如：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">*.qq.com A 攻击者IP</div></pre></td></tr></table></figure>
-<h2 id="防范措施"><a href="#防范措施" class="headerlink" title="防范措施"></a>防范措施</h2><h3 id="静态路由"><a href="#静态路由" class="headerlink" title="静态路由"></a>静态路由</h3><p>静态 ARP 表中 IP-MAC映射不会动态更新，一般是由管理员对网段上的每台机器进行静态登记，所以来自攻击者的ARP 欺骗报文就会被忽略。但是开发静态 ARP 表和维持表项的及时更新代价高，需要管理员付出大量工作。此种方法的缺点是必须手工设置静态 IP - MAC 地址映射，需要进行大量分散且繁琐的工作，只适合于小型局域网。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">arp -s IP地址 MAC地址  类型（默认为static）//绑定</div></pre></td></tr></table></figure>
-<h3 id="加密传输"><a href="#加密传输" class="headerlink" title="加密传输"></a>加密传输</h3><p>通常 ARP 欺骗导致数据包从受害机流向攻击方，使得网络通信被非法截取和监听。因此可以使用加密传输策略，即使攻击方得到发送的网络通信包，但是由于无法解密，不能获得机密信息，从而保证了网络传输的安全性 。</p>
-<h3 id="采用防火墙"><a href="#采用防火墙" class="headerlink" title="采用防火墙"></a>采用防火墙</h3><p>在系统内核层拦截可能发生的外来虚假数据或本机对外的ARP攻击数据包，在保障本机不受ARP攻击的同时，减少如感染恶意程序后对外的攻击机会，保证网络畅通。</p>
-<h3 id="划分VLAN"><a href="#划分VLAN" class="headerlink" title="划分VLAN"></a>划分VLAN</h3><p>使用虚拟子网细分网络拓扑，arp广播包无法穿透子网，从而实现隔离，缩小arp感染范围</p>
-<h2 id="攻击检测"><a href="#攻击检测" class="headerlink" title="攻击检测"></a>攻击检测</h2><ol>
-<li>手动检测，ping网关IP地址后，利用arp命令查看arp缓存，找到网关IP地址对应的MAC地址，然后使用局域网工具软件查看这个MAC地址对应的主机，即可找到攻击主机。</li>
-<li>使用nbtscan扫描局域网后，如果发现有两个不同IP地址的主机所对应的MAC地址一样，则可以肯定其中有一个是盗用了另一个主机的MAC地址，只要对照一下原网关的MAC地址即可发现攻击源主机。</li>
-</ol>
-<h2 id="编程实现"><a href="#编程实现" class="headerlink" title="编程实现"></a>编程实现</h2><p>主要使用scapy库，</p>
-
         
         
         <p class="article-more-link">
+          
+            <a href="/2018/05/21/arp/#more">Read More</a>
           
        </p>
     </div>
@@ -202,35 +141,18 @@
 		<a href="/about" title="wanna-fly" target="_blank" itemprop="author">wanna-fly</a>
 		
   <p class="article-time">
-    <time datetime="2017-10-30T16:00:00.000Z" itemprop="datePublished"> 發表於 2017-10-31</time>
+    <time datetime="2017-10-30T16:00:00.000Z" itemprop="datePublished"> Published 2017-10-31</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <a id="more"></a>
-<h2 id="认证"><a href="#认证" class="headerlink" title="认证"></a>认证</h2><p>消息认证确保收到的数据确实和发送时的一样(即没有修改、插入、删除或重放)，且发送方声称的身份是真实有效的<br>三种消息认证的方法<br>1.消息加密<br>2.消息认证码（MAC）<br>3.哈希函数</p>
-<h3 id="消息加密"><a href="#消息加密" class="headerlink" title="消息加密"></a>消息加密</h3><p>消息加密本身提供了一种认证手段</p>
-<h4 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h4><p>接收方可以确信消息是由发送方产生的，因为除了接收方以外只有发送方拥有加密密钥，产生出用此密钥可以解密的密文</p>
-<blockquote>
-<p>解决解密所得消息是否具有可读性的问题:<br>要求明文具有某种易于识别的结构，如在加密前对每个消息附加一个帧校验序列FCS<br>FCS和加密函数执行的顺序很重要</p>
-</blockquote>
-<h4 id="公钥加密作为认证手段"><a href="#公钥加密作为认证手段" class="headerlink" title="公钥加密作为认证手段"></a>公钥加密作为认证手段</h4><p>若要提供认证，发送方用自己的私钥对消息加密，接收方用发送方的公钥解密(验证)，就提供了认证功能。<br>如果发送方用私钥加密消息，再用接收方的公钥加密，就实现了既保密又认证的通信<br>既保密又认证的通信的代价是需要执行四次复杂的公钥算法而不是两次。</p>
-<h3 id="消息认证码MAC"><a href="#消息认证码MAC" class="headerlink" title="消息认证码MAC"></a>消息认证码MAC</h3><p>使用密钥产生短小的定长数据分组，即所谓的密码检验MAC，将它附加在报文中。通信双方A和B共享密钥K，报文从A发往B，A计算MAC=CK(M), 附在报文后发给B。B对接收到的报文重新计算MAC，并与接收到的MAC比较</p>
-<blockquote>
-<p>MAC加密所得的消息校验和$ MAC = C_K(M)$<br>使用一个秘密密钥K，浓缩一个变长的消息M，产生一个固定长度的认证码</p>
-</blockquote>
-<p>MAC不提供数字签名，因为双方共享密钥。</p>
-<h3 id="散列函数Hash"><a href="#散列函数Hash" class="headerlink" title="散列函数Hash"></a>散列函数Hash</h3><p>一个散列函数以变长的报文M作为输入，产生定长的散列码H(M)，作为输出，亦称作报文摘要Message Digest. 散列码是报文所有比特的函数值，具有差错检测能力，报文任意一比特的改变都将引起散列码的改变</p>
-<h2 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h2><p>数字签名与消息认证的区别<br>消息认证是使消息接收方验证消息发送者发送的内容有无被修改过，对防止第三者破坏足够，但收发双方有利害冲突时就无法解决纷争，需要更严格的手段，即数字签名。</p>
-<h3 id="直接数字签名"><a href="#直接数字签名" class="headerlink" title="直接数字签名"></a>直接数字签名</h3><p>直接数字签名仅涉及通信方(信源、信宿) ，假定信宿知道信源的公开密钥，数字签名通过信源对整个报文用私有密钥加密，或对报文的摘要加密来实现，通常先签名，然后对消息和签名一起加密，安全性依赖于信源私有密钥的安全性（发送方要抵赖发送某一消息时，可能会声称其私有密钥丢失或被窃，从而他人伪造了他的签名）</p>
-<h3 id="仲裁数字签名"><a href="#仲裁数字签名" class="headerlink" title="仲裁数字签名"></a>仲裁数字签名</h3><p>涉及到一个仲裁方(arbiter A)，签名方的签名报文首先送给仲裁者，仲裁者对报文和签名进行测试以检验出处和内容，然后注上日期和仲裁说明后发给接收方，要求仲裁方在一定程度上是可以信任的，可以用对称密码或公开密钥密码实现，仲裁方可以知道消息，也可以不知道消息</p>
-<h3 id="Elgamal"><a href="#Elgamal" class="headerlink" title="Elgamal"></a>Elgamal</h3><h4 id="ELgamal加密方案"><a href="#ELgamal加密方案" class="headerlink" title="ELgamal加密方案"></a>ELgamal加密方案</h4><p>假定A和B互相通信, 共享大素数p, 本原元素α<br>    0&lt;= m &lt;= p-1, gcd(α, p) = 1, A和B各有自己的秘钥xA和xB<br>加密:<br>A选择k∈[0, p-1], k的作用即为xA, A访问公共区域找到B的公开密钥$Y^B = α^{x_B} mod p$, 计算：<br>$K = (Y^B)k mod p$，即$K = α^{x_B}k mod p$<br>$c1 = α^k mod p$<br>$c2 = m^K mod p$<br>密文即为 (c1, c2)<br>解密:<br>B首先恢复K：$K = c1^{x_B} mod p = α^{kx_B} mod p$<br>然后恢复m：$m = c_2/K mod p = c_2K^{-1} mod p$</p>
-<h4 id="签名方案以及验证"><a href="#签名方案以及验证" class="headerlink" title="签名方案以及验证"></a>签名方案以及验证</h4><p>公钥：p:素数， g&lt;p, g是p的原根，$y=g^x (mod p)$<br>私钥：x&lt;p-1<br>签名：k:随机选取, k属于[1,p-1] 且k与p-1互素，<br>a（签名）=$g^k mod p$<br>b（签名）满足  M = (xa+kb) mod ( p-1)<br>(即有：$b = ( M-xa)k^{-1} mod (p-1) $   )<br>验证：如果 $y^a·a^b (mod p ) = g^M (mod p)$，则签名有效</p>
-
+        <h2 id="认证"><a href="#认证" class="headerlink" title="认证"></a>认证</h2><p>消息认证确保收到的数据确实和发送时的一样(即没有修改、插入、删除或重放)，且发送方声称的身份是真实有效的<br>三种消息认证的方法<br>1.消息加密<br>2.消息认证码（MAC）<br>3.哈希函数</p>
         
         
         <p class="article-more-link">
+          
+            <a href="/2017/10/31/security5/#more">Read More</a>
           
        </p>
     </div>
@@ -275,44 +197,19 @@
 		<a href="/about" title="wanna-fly" target="_blank" itemprop="author">wanna-fly</a>
 		
   <p class="article-time">
-    <time datetime="2017-10-29T16:00:00.000Z" itemprop="datePublished"> 發表於 2017-10-30</time>
+    <time datetime="2017-10-29T16:00:00.000Z" itemprop="datePublished"> Published 2017-10-30</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <a id="more"></a>
-<h2 id="问题的提出"><a href="#问题的提出" class="headerlink" title="问题的提出"></a>问题的提出</h2><p>1.密钥管理量的困难，传统密钥n个用户需要C(n,2)=n(n-1)/2个密钥<br>2.数字签名的问题，传统加密算法无法实现抗抵赖<br>3.密钥必须通过安全信道分配，如物理硬件</p>
+        <h2 id="问题的提出"><a href="#问题的提出" class="headerlink" title="问题的提出"></a>问题的提出</h2><p>1.密钥管理量的困难，传统密钥n个用户需要C(n,2)=n(n-1)/2个密钥<br>2.数字签名的问题，传统加密算法无法实现抗抵赖<br>3.密钥必须通过安全信道分配，如物理硬件</p>
 <h2 id="公钥密码简介"><a href="#公钥密码简介" class="headerlink" title="公钥密码简介"></a>公钥密码简介</h2><p>公开密钥算法是非对称算法，即密钥分为公钥和私钥，因此称双密钥体制，其中公钥可以公开，因此也称公钥算法，基于数学函数而不是代替和换位</p>
-<h3 id="公钥密码的应用"><a href="#公钥密码的应用" class="headerlink" title="公钥密码的应用"></a>公钥密码的应用</h3><p>1.加密、解密<br>2.数字签名<br>3.密钥交换</p>
-<h3 id="加密原理"><a href="#加密原理" class="headerlink" title="加密原理"></a>加密原理</h3><p>任何人向B发送信息都可以使用同一个密钥(B的公钥)加密，没有其他人可以得到B 的私钥，所以只有B可以用自己的私钥解密</p>
-<h3 id="签名认证原理"><a href="#签名认证原理" class="headerlink" title="签名认证原理"></a>签名认证原理</h3><p>A向B发送消息X，A的公钥为KUa，私钥为KRa<br>加密： $Y = E<em>{KRa}(X) $（数字签名）<br>解密： $X = D</em>{KUa}(Y) $</p>
-<blockquote>
-<p>注意：不能保证消息的保密性</p>
-</blockquote>
-<h3 id="保密-鉴别"><a href="#保密-鉴别" class="headerlink" title="保密+鉴别"></a>保密+鉴别</h3><p>A–&gt;B:$ Z=E_{KU<em>b}(E</em>{KR<em>a}(X))$<br>B:$ E</em>{KU<em>a}(E</em>{KR_b}(Z))=X$</p>
-<blockquote>
-<p>公开密钥很慢，多用在密钥管理和数字签名</p>
-</blockquote>
-<h2 id="单向陷门函数"><a href="#单向陷门函数" class="headerlink" title="单向陷门函数"></a>单向陷门函数</h2><p>寻找合适的单向陷门函数是公钥密码体制应用的关键</p>
-<blockquote>
-<p>满足下列条件的函数f：<br>        (1)  给定x，计算y=f(x)是容易的<br>        (2)  给定y,  计算x使y=f(x)是困难的<br>        (3)  存在z，已知z 时, 对给定的任何y，若相应的x存 在，则计算x使y=f(x)是容易的<br>仅满足(1)、(2)两条的称为单向函数；第(3)条称为陷门性，z 称为陷门信息</p>
-</blockquote>
-<h2 id="RSA算法"><a href="#RSA算法" class="headerlink" title="RSA算法"></a>RSA算法</h2><p>RSA的安全性是基于大整数素因子分解的困难性</p>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>实现的步骤如下：Bob为实现者</p>
-<blockquote>
-<p> (1)  Bob寻找出两个大素数p和q<br>    (2)  Bob计算出n=pq 和φ(n)=(p-1)(q-1)<br>    (3)  Bob选择一个随机数e (0&lt;e&lt; φ(n))，满足(e,φ(n))=1<br>    (4)  Bob使用辗转相除法计算$d=e^{-1}(modφ(n))$，即ed=1(mod(p-1)(q-1))<br>    (5) （e,n)作为公钥.<br>   （6）(d,n)或者d作为私钥.</p>
-</blockquote>
-<p>密码分析者攻击RSA体制的关键点在于如何分解n</p>
-<h3 id="加解密"><a href="#加解密" class="headerlink" title="加解密"></a>加解密</h3><p>参数T={N}；私钥SK=D；公钥PK=E；</p>
-<blockquote>
-<p>设：明文M，密文C，M&lt;N,那么：<br> 用公钥作业：$M^E mod N = C $(加密)<br> 用私钥作业：$C^D mod N = M$（解密）</p>
-</blockquote>
-<h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h3><h3 id="攻击"><a href="#攻击" class="headerlink" title="攻击"></a>攻击</h3><p>1.已知φ(n)和N，求p和q<br>2.已知e，已经密文c1，c2，c3，以及N1，N2，N3，求明文（中国剩余定理）<br>三种攻击 RSA的方法:<br>1.强力穷举密钥<br>2.时间攻击：依赖解密算法的运行时间，利用CPU处理某些特殊的模乘比较慢的规律来确定每一位指数<br>3.数学攻击 ：实质上是对两个素数乘积的分解<br>密码分析者攻击RSA体制的关键点在于如何分解n<br>若分解成功使n=pq，则可以算出φ(n)＝（p-1)(q-1)，然后由公开的e，解出秘密的d<br>建议选择p和q大约是100位的十进制素数，模n的长度要求至少是512比特，为了提高加密速度，通常取e为特定的小整数<br>速度一直是RSA的缺陷。一般来说只用于少量数据加密。</p>
-
         
         
         <p class="article-more-link">
+          
+            <a href="/2017/10/30/security4/#more">Read More</a>
           
        </p>
     </div>
@@ -357,7 +254,7 @@
 		<a href="/about" title="wanna-fly" target="_blank" itemprop="author">wanna-fly</a>
 		
   <p class="article-time">
-    <time datetime="2017-10-28T16:00:00.000Z" itemprop="datePublished"> 發表於 2017-10-29</time>
+    <time datetime="2017-10-28T16:00:00.000Z" itemprop="datePublished"> Published 2017-10-29</time>
     
   </p>
 </header>
@@ -427,13 +324,14 @@
 		<a href="/about" title="wanna-fly" target="_blank" itemprop="author">wanna-fly</a>
 		
   <p class="article-time">
-    <time datetime="2017-10-23T16:00:00.000Z" itemprop="datePublished"> 發表於 2017-10-24</time>
+    <time datetime="2017-10-23T16:00:00.000Z" itemprop="datePublished"> Published 2017-10-24</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <p><img src="/img/cover.jpg" alt=""><br>
+        <h2 id="Euclid算法—“辗转相除法”"><a href="#Euclid算法—“辗转相除法”" class="headerlink" title="Euclid算法—“辗转相除法”"></a>Euclid算法—“辗转相除法”</h2><p>如果b|g，b|h,对于任何整数m和n，则满足b|(mg+nh).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if c, d∈Z and c=dq+r,where q,r∈Z, then(c,d)=(d,r)</div><div class="line">proof: 1.r=c-dq, if e|c and e|d, then e|r</div><div class="line">	2.c=dq+r, if e|d and e|r, then e|c</div><div class="line">	=&gt;(c,d)=(d,r)</div></pre></td></tr></table></figure>
         
         
         <p class="article-more-link">
@@ -476,10 +374,10 @@
   </nav>
 
 </div>
-      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
@@ -489,7 +387,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">標簽</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -513,7 +411,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情鏈接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
     </ul>
@@ -523,11 +421,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
 </div>
 
@@ -677,7 +575,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

@@ -11,18 +11,18 @@
     
 
     
-    <meta name="description" content="问题的提出1.密钥管理量的困难，传统密钥n个用户需要C(n,2)=n(n-1)/2个密钥2.数字签名的问题，传统加密算法无法实现抗抵赖3.密钥必须通过安全信道分配，如物理硬件 公钥密码简介公开密钥算法是非对称算法，即密钥分为公钥和私钥，因此称双密钥体制，其中公钥可以公开，因此也称公钥算法，基于数学函数而不是代替和换位 公钥密码的应用1.加密、解密2.数字签名3.密钥交换 加密原理任何人向B发送信">
+    <meta name="description" content="问题的提出1.密钥管理量的困难，传统密钥n个用户需要C(n,2)=n(n-1)/2个密钥2.数字签名的问题，传统加密算法无法实现抗抵赖3.密钥必须通过安全信道分配，如物理硬件 公钥密码简介公开密钥算法是非对称算法，即密钥分为公钥和私钥，因此称双密钥体制，其中公钥可以公开，因此也称公钥算法，基于数学函数而不是代替和换位">
 <meta name="keywords" content="security">
 <meta property="og:type" content="article">
 <meta property="og:title" content="密码学复习笔记之非对称密码">
 <meta property="og:url" content="http://yoursite.com/2017/10/30/security4/index.html">
 <meta property="og:site_name" content="ybx&#39;s Blog">
-<meta property="og:description" content="问题的提出1.密钥管理量的困难，传统密钥n个用户需要C(n,2)=n(n-1)/2个密钥2.数字签名的问题，传统加密算法无法实现抗抵赖3.密钥必须通过安全信道分配，如物理硬件 公钥密码简介公开密钥算法是非对称算法，即密钥分为公钥和私钥，因此称双密钥体制，其中公钥可以公开，因此也称公钥算法，基于数学函数而不是代替和换位 公钥密码的应用1.加密、解密2.数字签名3.密钥交换 加密原理任何人向B发送信">
+<meta property="og:description" content="问题的提出1.密钥管理量的困难，传统密钥n个用户需要C(n,2)=n(n-1)/2个密钥2.数字签名的问题，传统加密算法无法实现抗抵赖3.密钥必须通过安全信道分配，如物理硬件 公钥密码简介公开密钥算法是非对称算法，即密钥分为公钥和私钥，因此称双密钥体制，其中公钥可以公开，因此也称公钥算法，基于数学函数而不是代替和换位">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-30T14:23:00.966Z">
+<meta property="og:updated_time" content="2018-05-25T15:40:41.093Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="密码学复习笔记之非对称密码">
-<meta name="twitter:description" content="问题的提出1.密钥管理量的困难，传统密钥n个用户需要C(n,2)=n(n-1)/2个密钥2.数字签名的问题，传统加密算法无法实现抗抵赖3.密钥必须通过安全信道分配，如物理硬件 公钥密码简介公开密钥算法是非对称算法，即密钥分为公钥和私钥，因此称双密钥体制，其中公钥可以公开，因此也称公钥算法，基于数学函数而不是代替和换位 公钥密码的应用1.加密、解密2.数字签名3.密钥交换 加密原理任何人向B发送信">
+<meta name="twitter:description" content="问题的提出1.密钥管理量的困难，传统密钥n个用户需要C(n,2)=n(n-1)/2个密钥2.数字签名的问题，传统加密算法无法实现抗抵赖3.密钥必须通过安全信道分配，如物理硬件 公钥密码简介公开密钥算法是非对称算法，即密钥分为公钥和私钥，因此称双密钥体制，其中公钥可以公开，因此也称公钥算法，基于数学函数而不是代替和换位">
 
     
     <link rel="alternative" href="/atom.xml" title="ybx&#39;s Blog" type="application/atom+xml">
@@ -50,7 +50,7 @@
 				<h1 class="site-name"><a href="/" title="ybx&#39;s Blog">ybx&#39;s Blog</a></h1>
 				<h2 class="blog-motto">天空没有留下翅膀的痕迹，但我已然飞过</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -66,7 +66,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -89,22 +89,22 @@
 		<a href="/about" title="wanna-fly" target="_blank" itemprop="author">wanna-fly</a>
 		
   <p class="article-time">
-    <time datetime="2017-10-29T16:00:00.000Z" itemprop="datePublished"> 發表於 2017-10-30</time>
+    <time datetime="2017-10-29T16:00:00.000Z" itemprop="datePublished"> Published 2017-10-30</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目錄</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题的提出"><span class="toc-number">1.</span> <span class="toc-text">问题的提出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#公钥密码简介"><span class="toc-number">2.</span> <span class="toc-text">公钥密码简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#公钥密码的应用"><span class="toc-number">2.1.</span> <span class="toc-text">公钥密码的应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加密原理"><span class="toc-number">2.2.</span> <span class="toc-text">加密原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#签名认证原理"><span class="toc-number">2.3.</span> <span class="toc-text">签名认证原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#保密-鉴别"><span class="toc-number">2.4.</span> <span class="toc-text">保密+鉴别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单向陷门函数"><span class="toc-number">3.</span> <span class="toc-text">单向陷门函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RSA算法"><span class="toc-number">4.</span> <span class="toc-text">RSA算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实现"><span class="toc-number">4.1.</span> <span class="toc-text">实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加解密"><span class="toc-number">4.2.</span> <span class="toc-text">加解密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#证明"><span class="toc-number">4.3.</span> <span class="toc-text">证明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#攻击"><span class="toc-number">4.4.</span> <span class="toc-text">攻击</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<a id="more"></a>
-<h2 id="问题的提出"><a href="#问题的提出" class="headerlink" title="问题的提出"></a>问题的提出</h2><p>1.密钥管理量的困难，传统密钥n个用户需要C(n,2)=n(n-1)/2个密钥<br>2.数字签名的问题，传统加密算法无法实现抗抵赖<br>3.密钥必须通过安全信道分配，如物理硬件</p>
+		<h2 id="问题的提出"><a href="#问题的提出" class="headerlink" title="问题的提出"></a>问题的提出</h2><p>1.密钥管理量的困难，传统密钥n个用户需要C(n,2)=n(n-1)/2个密钥<br>2.数字签名的问题，传统加密算法无法实现抗抵赖<br>3.密钥必须通过安全信道分配，如物理硬件</p>
 <h2 id="公钥密码简介"><a href="#公钥密码简介" class="headerlink" title="公钥密码简介"></a>公钥密码简介</h2><p>公开密钥算法是非对称算法，即密钥分为公钥和私钥，因此称双密钥体制，其中公钥可以公开，因此也称公钥算法，基于数学函数而不是代替和换位</p>
+<a id="more"></a>
 <h3 id="公钥密码的应用"><a href="#公钥密码的应用" class="headerlink" title="公钥密码的应用"></a>公钥密码的应用</h3><p>1.加密、解密<br>2.数字签名<br>3.密钥交换</p>
 <h3 id="加密原理"><a href="#加密原理" class="headerlink" title="加密原理"></a>加密原理</h3><p>任何人向B发送信息都可以使用同一个密钥(B的公钥)加密，没有其他人可以得到B 的私钥，所以只有B可以用自己的私钥解密</p>
 <h3 id="签名认证原理"><a href="#签名认证原理" class="headerlink" title="签名认证原理"></a>签名认证原理</h3><p>A向B发送消息X，A的公钥为KUa，私钥为KRa<br>加密： $Y = E<em>{KRa}(X) $（数字签名）<br>解密： $X = D</em>{KUa}(Y) $</p>
@@ -184,17 +184,17 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目錄</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题的提出"><span class="toc-number">1.</span> <span class="toc-text">问题的提出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#公钥密码简介"><span class="toc-number">2.</span> <span class="toc-text">公钥密码简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#公钥密码的应用"><span class="toc-number">2.1.</span> <span class="toc-text">公钥密码的应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加密原理"><span class="toc-number">2.2.</span> <span class="toc-text">加密原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#签名认证原理"><span class="toc-number">2.3.</span> <span class="toc-text">签名认证原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#保密-鉴别"><span class="toc-number">2.4.</span> <span class="toc-text">保密+鉴别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单向陷门函数"><span class="toc-number">3.</span> <span class="toc-text">单向陷门函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RSA算法"><span class="toc-number">4.</span> <span class="toc-text">RSA算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实现"><span class="toc-number">4.1.</span> <span class="toc-text">实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加解密"><span class="toc-number">4.2.</span> <span class="toc-text">加解密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#证明"><span class="toc-number">4.3.</span> <span class="toc-text">证明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#攻击"><span class="toc-number">4.4.</span> <span class="toc-text">攻击</span></a></li></ol></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
@@ -204,7 +204,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">標簽</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -228,7 +228,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情鏈接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
     </ul>
@@ -238,11 +238,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
 </div>
 
@@ -469,7 +469,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

@@ -11,17 +11,18 @@
     
 
     
-    <meta name="keywords" content="security">
+    <meta name="description" content="Euclid算法—“辗转相除法”如果b|g，b|h,对于任何整数m和n，则满足b|(mg+nh). 1234if c, d∈Z and c=dq+r,where q,r∈Z, then(c,d)=(d,r)proof: 1.r=c-dq, if e|c and e|d, then e|r	2.c=dq+r, if e|d and e|r, then e|c	=&amp;gt;(c,d)=(d,r)">
+<meta name="keywords" content="security">
 <meta property="og:type" content="article">
 <meta property="og:title" content="密码学复习笔记之数学基础">
 <meta property="og:url" content="http://yoursite.com/2017/10/24/security/index.html">
 <meta property="og:site_name" content="ybx&#39;s Blog">
+<meta property="og:description" content="Euclid算法—“辗转相除法”如果b|g，b|h,对于任何整数m和n，则满足b|(mg+nh). 1234if c, d∈Z and c=dq+r,where q,r∈Z, then(c,d)=(d,r)proof: 1.r=c-dq, if e|c and e|d, then e|r	2.c=dq+r, if e|d and e|r, then e|c	=&amp;gt;(c,d)=(d,r)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/img/cover.jpg">
-<meta property="og:updated_time" content="2017-10-27T09:02:06.502Z">
+<meta property="og:updated_time" content="2018-05-25T15:40:07.621Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="密码学复习笔记之数学基础">
-<meta name="twitter:image" content="http://yoursite.com/img/cover.jpg">
+<meta name="twitter:description" content="Euclid算法—“辗转相除法”如果b|g，b|h,对于任何整数m和n，则满足b|(mg+nh). 1234if c, d∈Z and c=dq+r,where q,r∈Z, then(c,d)=(d,r)proof: 1.r=c-dq, if e|c and e|d, then e|r	2.c=dq+r, if e|d and e|r, then e|c	=&amp;gt;(c,d)=(d,r)">
 
     
     <link rel="alternative" href="/atom.xml" title="ybx&#39;s Blog" type="application/atom+xml">
@@ -49,7 +50,7 @@
 				<h1 class="site-name"><a href="/" title="ybx&#39;s Blog">ybx&#39;s Blog</a></h1>
 				<h2 class="blog-motto">天空没有留下翅膀的痕迹，但我已然飞过</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -65,7 +66,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -88,22 +89,22 @@
 		<a href="/about" title="wanna-fly" target="_blank" itemprop="author">wanna-fly</a>
 		
   <p class="article-time">
-    <time datetime="2017-10-23T16:00:00.000Z" itemprop="datePublished"> 發表於 2017-10-24</time>
+    <time datetime="2017-10-23T16:00:00.000Z" itemprop="datePublished"> Published 2017-10-24</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目錄</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Euclid算法—“辗转相除法”"><span class="toc-number">1.</span> <span class="toc-text">Euclid算法—“辗转相除法”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#同余和模运算"><span class="toc-number">2.</span> <span class="toc-text">同余和模运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反复平方法"><span class="toc-number">3.</span> <span class="toc-text">反复平方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完全剩余系-amp-既约剩余系"><span class="toc-number">4.</span> <span class="toc-text">完全剩余系&既约剩余系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#乘法逆元"><span class="toc-number">5.</span> <span class="toc-text">乘法逆元</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#欧几里得算法求乘法逆元"><span class="toc-number">5.1.</span> <span class="toc-text">欧几里得算法求乘法逆元</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#欧拉函数求乘法逆元"><span class="toc-number">5.2.</span> <span class="toc-text">欧拉函数求乘法逆元</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#群环域"><span class="toc-number">6.</span> <span class="toc-text">群环域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#群：集合上定义一种运算"><span class="toc-number">6.1.</span> <span class="toc-text">群：集合上定义一种运算+</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#环：集合上定义两种运算"><span class="toc-number">6.2.</span> <span class="toc-text">环：集合上定义两种运算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多项式运算"><span class="toc-number">7.</span> <span class="toc-text">多项式运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#系数在-Z-p-上的运算"><span class="toc-number">7.1.</span> <span class="toc-text">系数在$ Z_p $上的运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#系数在-GF-2-n-中的运算"><span class="toc-number">7.2.</span> <span class="toc-text">系数在$ GF(2^n) $中的运算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#加法"><span class="toc-number">7.2.1.</span> <span class="toc-text">加法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#乘法"><span class="toc-number">7.2.2.</span> <span class="toc-text">乘法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#除法"><span class="toc-number">7.2.3.</span> <span class="toc-text">除法</span></a></li></ol></li></ol></li></ol>
 		
 		</div>
 		
-		<p><img src="/img/cover.jpg" alt=""><br><a id="more"></a></p>
-<h2 id="Euclid算法—“辗转相除法”"><a href="#Euclid算法—“辗转相除法”" class="headerlink" title="Euclid算法—“辗转相除法”"></a>Euclid算法—“辗转相除法”</h2><p>如果b|g，b|h,对于任何整数m和n，则满足b|(mg+nh).</p>
+		<h2 id="Euclid算法—“辗转相除法”"><a href="#Euclid算法—“辗转相除法”" class="headerlink" title="Euclid算法—“辗转相除法”"></a>Euclid算法—“辗转相除法”</h2><p>如果b|g，b|h,对于任何整数m和n，则满足b|(mg+nh).</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if c, d∈Z and c=dq+r,where q,r∈Z, then(c,d)=(d,r)</div><div class="line">proof: 1.r=c-dq, if e|c and e|d, then e|r</div><div class="line">	2.c=dq+r, if e|d and e|r, then e|c</div><div class="line">	=&gt;(c,d)=(d,r)</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>先证明若e是c和d的因数，那么e也是d和r的因数，接着证明若e是d和r的因数，那么e也是c和d的因数，所以得c和d的公因子集合与d和r的公因子集合相等，最大公因子也相等。<br>则欧几里得算法在此基础上迭代即可</p>
 <h2 id="同余和模运算"><a href="#同余和模运算" class="headerlink" title="同余和模运算"></a>同余和模运算</h2><p>a mod m=b, 即 a与ｂ的差是m的整数倍。 a ≡ b(mod m) </p>
 <blockquote>
@@ -178,17 +179,17 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目錄</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Euclid算法—“辗转相除法”"><span class="toc-number">1.</span> <span class="toc-text">Euclid算法—“辗转相除法”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#同余和模运算"><span class="toc-number">2.</span> <span class="toc-text">同余和模运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反复平方法"><span class="toc-number">3.</span> <span class="toc-text">反复平方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完全剩余系-amp-既约剩余系"><span class="toc-number">4.</span> <span class="toc-text">完全剩余系&既约剩余系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#乘法逆元"><span class="toc-number">5.</span> <span class="toc-text">乘法逆元</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#欧几里得算法求乘法逆元"><span class="toc-number">5.1.</span> <span class="toc-text">欧几里得算法求乘法逆元</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#欧拉函数求乘法逆元"><span class="toc-number">5.2.</span> <span class="toc-text">欧拉函数求乘法逆元</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#群环域"><span class="toc-number">6.</span> <span class="toc-text">群环域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#群：集合上定义一种运算"><span class="toc-number">6.1.</span> <span class="toc-text">群：集合上定义一种运算+</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#环：集合上定义两种运算"><span class="toc-number">6.2.</span> <span class="toc-text">环：集合上定义两种运算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多项式运算"><span class="toc-number">7.</span> <span class="toc-text">多项式运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#系数在-Z-p-上的运算"><span class="toc-number">7.1.</span> <span class="toc-text">系数在$ Z_p $上的运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#系数在-GF-2-n-中的运算"><span class="toc-number">7.2.</span> <span class="toc-text">系数在$ GF(2^n) $中的运算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#加法"><span class="toc-number">7.2.1.</span> <span class="toc-text">加法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#乘法"><span class="toc-number">7.2.2.</span> <span class="toc-text">乘法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#除法"><span class="toc-number">7.2.3.</span> <span class="toc-text">除法</span></a></li></ol></li></ol></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
@@ -198,7 +199,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">標簽</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -222,7 +223,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情鏈接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
     </ul>
@@ -232,11 +233,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
 </div>
 
@@ -463,7 +464,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

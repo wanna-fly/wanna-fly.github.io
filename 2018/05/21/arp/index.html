@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="ybx&#39;s Blog">
 <meta property="og:description" content="网络攻防实践课堂演示在虚拟机环境下，以kali系统作攻击者，win7系统作为靶机，进行内网arp攻击以及arp欺骗，实现断网，获取账密，会话劫持以及DNS欺骗。 arp协议ARP（Address Resolution Protocol），地址解析协议 ，作用是将网络层地址（例如IP地址）转换为链路层地址（即MAC地址）。在以太网协议（数据链路层）中规定，主机之间需要通过MAC地址进行通信，但是在上">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-21T15:39:10.123Z">
+<meta property="og:updated_time" content="2018-05-25T15:38:15.899Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ybx&#39;s Blog">
 <meta name="twitter:description" content="网络攻防实践课堂演示在虚拟机环境下，以kali系统作攻击者，win7系统作为靶机，进行内网arp攻击以及arp欺骗，实现断网，获取账密，会话劫持以及DNS欺骗。 arp协议ARP（Address Resolution Protocol），地址解析协议 ，作用是将网络层地址（例如IP地址）转换为链路层地址（即MAC地址）。在以太网协议（数据链路层）中规定，主机之间需要通过MAC地址进行通信，但是在上">
@@ -49,7 +49,7 @@
 				<h1 class="site-name"><a href="/" title="ybx&#39;s Blog">ybx&#39;s Blog</a></h1>
 				<h2 class="blog-motto">天空没有留下翅膀的痕迹，但我已然飞过</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -65,7 +65,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -88,14 +88,14 @@
 		<a href="/about" title="wanna-fly" target="_blank" itemprop="author">wanna-fly</a>
 		
   <p class="article-time">
-    <time datetime="2018-05-21T15:40:54.088Z" itemprop="datePublished"> 發表於 2018-05-21</time>
+    <time datetime="2018-05-21T15:40:54.088Z" itemprop="datePublished"> Published 2018-05-21</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目錄</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#网络攻防实践课堂演示"><span class="toc-number">1.</span> <span class="toc-text">网络攻防实践课堂演示</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#arp协议"><span class="toc-number">1.1.</span> <span class="toc-text">arp协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#arp攻击原理"><span class="toc-number">1.2.</span> <span class="toc-text">arp攻击原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#演示"><span class="toc-number">1.3.</span> <span class="toc-text">演示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#demo1：断网攻击"><span class="toc-number">1.3.1.</span> <span class="toc-text">demo1：断网攻击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#demo2：会话劫持"><span class="toc-number">1.3.2.</span> <span class="toc-text">demo2：会话劫持</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#tips：kali下安装ferret踩坑记录"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">tips：kali下安装ferret踩坑记录</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#demo3：DNS欺骗"><span class="toc-number">1.3.3.</span> <span class="toc-text">demo3：DNS欺骗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#防范措施"><span class="toc-number">1.4.</span> <span class="toc-text">防范措施</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#静态路由"><span class="toc-number">1.4.1.</span> <span class="toc-text">静态路由</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加密传输"><span class="toc-number">1.4.2.</span> <span class="toc-text">加密传输</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#采用防火墙"><span class="toc-number">1.4.3.</span> <span class="toc-text">采用防火墙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#划分VLAN"><span class="toc-number">1.4.4.</span> <span class="toc-text">划分VLAN</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#攻击检测"><span class="toc-number">1.5.</span> <span class="toc-text">攻击检测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编程实现"><span class="toc-number">1.6.</span> <span class="toc-text">编程实现</span></a></li></ol></li></ol>
 		
@@ -103,6 +103,7 @@
 		
 		<h1 id="网络攻防实践课堂演示"><a href="#网络攻防实践课堂演示" class="headerlink" title="网络攻防实践课堂演示"></a>网络攻防实践课堂演示</h1><p>在虚拟机环境下，以kali系统作攻击者，win7系统作为靶机，进行内网arp攻击以及arp欺骗，实现断网，获取账密，会话劫持以及DNS欺骗。</p>
 <h2 id="arp协议"><a href="#arp协议" class="headerlink" title="arp协议"></a>arp协议</h2><p>ARP（Address Resolution Protocol），地址解析协议 ，作用是将网络层地址（例如IP地址）转换为链路层地址（即MAC地址）。在以太网协议（数据链路层）中规定，主机之间需要通过MAC地址进行通信，但是在上层协议中，网络层和运输层只关心IP地址，所以数据链路层收到上层传递的数据包中并不包含MAC地址，为了解决这个问题，需要引入ARP协议，使得主机可以根据网络层IP数据包包头中的IP地址信息来获取相应的目标MAC地址，从而构造以太网帧实现通信。</p>
+<a id="more"></a>
 <p>工作流程：假设主机A和B在同一个网段，主机A要向主机B发送信息，流程如下</p>
 <ol>
 <li>主机A首先查看自己的ARP表查找主机B对应的ARP表项。如果找到，则直接利用ARP表中的MAC地址，对IP数据包进行帧封装，并将数据包发送给主机B。</li>
@@ -206,17 +207,17 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目錄</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#网络攻防实践课堂演示"><span class="toc-number">1.</span> <span class="toc-text">网络攻防实践课堂演示</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#arp协议"><span class="toc-number">1.1.</span> <span class="toc-text">arp协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#arp攻击原理"><span class="toc-number">1.2.</span> <span class="toc-text">arp攻击原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#演示"><span class="toc-number">1.3.</span> <span class="toc-text">演示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#demo1：断网攻击"><span class="toc-number">1.3.1.</span> <span class="toc-text">demo1：断网攻击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#demo2：会话劫持"><span class="toc-number">1.3.2.</span> <span class="toc-text">demo2：会话劫持</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#tips：kali下安装ferret踩坑记录"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">tips：kali下安装ferret踩坑记录</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#demo3：DNS欺骗"><span class="toc-number">1.3.3.</span> <span class="toc-text">demo3：DNS欺骗</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#防范措施"><span class="toc-number">1.4.</span> <span class="toc-text">防范措施</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#静态路由"><span class="toc-number">1.4.1.</span> <span class="toc-text">静态路由</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加密传输"><span class="toc-number">1.4.2.</span> <span class="toc-text">加密传输</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#采用防火墙"><span class="toc-number">1.4.3.</span> <span class="toc-text">采用防火墙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#划分VLAN"><span class="toc-number">1.4.4.</span> <span class="toc-text">划分VLAN</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#攻击检测"><span class="toc-number">1.5.</span> <span class="toc-text">攻击检测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编程实现"><span class="toc-number">1.6.</span> <span class="toc-text">编程实现</span></a></li></ol></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
@@ -226,7 +227,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">標簽</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -250,7 +251,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情鏈接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
     </ul>
@@ -260,11 +261,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
 </div>
 
@@ -491,7 +492,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
