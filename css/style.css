@@ -418,30 +418,30 @@ body >header a {
 }
 #imglogo {
   float: left;
-  width: 8em;
-  height: 8em;
+  width: 6em;
+  height: 6em;
 }
 @media only screen and (min-width: 768px) {
   #imglogo {
-    width: 9em;
+    width: 7em;
   }
 }
 @media only screen and (min-width: 1024px) {
   #imglogo {
-    width: 9.5em;
+    width: 7.5em;
   }
 }
 #imglogo img {
-  width: 8em;
+  width: 6em;
 }
 @media only screen and (min-width: 768px) {
   #imglogo img {
-    width: 9em;
+    width: 7em;
   }
 }
 @media only screen and (min-width: 1024px) {
   #imglogo img {
-    width: 9.5em;
+    width: 7.5em;
   }
 }
 #textlogo {
