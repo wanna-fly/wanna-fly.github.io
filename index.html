@@ -48,7 +48,7 @@
 				<h1 class="site-name"><a href="/" title="ybx&#39;s Blog">ybx&#39;s Blog</a></h1>
 				<h2 class="blog-motto">我是一条想变强的咸鱼！</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -89,7 +89,7 @@
 		<a href="/about" title="wanna-fly" target="_blank" itemprop="author">wanna-fly</a>
 		
   <p class="article-time">
-    <time datetime="2018-05-20T16:00:00.000Z" itemprop="datePublished"> 发表于 2018-05-21</time>
+    <time datetime="2018-05-20T16:00:00.000Z" itemprop="datePublished"> 發表於 2018-05-21</time>
     
   </p>
 </header>
@@ -139,6 +139,68 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/12/27/unpve/" title="unix网络编程之多人文件共享系统" itemprop="url">unix网络编程之多人文件共享系统</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="wanna-fly" target="_blank" itemprop="author">wanna-fly</a>
+		
+  <p class="article-time">
+    <time datetime="2017-12-26T16:00:00.000Z" itemprop="datePublished"> 發表於 2017-12-27</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h2><h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><ul>
+<li>用户账号密码登录</li>
+<li>上传文件</li>
+<li>查看文件列表</li>
+<li>删除文件（需要进行权限认证，每个用户仅可以删除自己上传的文件）</li>
+<li>下载文件</li>
+</ul>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2017/12/27/unpve/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/unix-network/">unix network</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/10/31/security5/" title="密码学复习笔记之消息认证与数字签名" itemprop="url">密码学复习笔记之消息认证与数字签名</a>
   </h1>
   <p class="article-author">By
@@ -146,7 +208,7 @@
 		<a href="/about" title="wanna-fly" target="_blank" itemprop="author">wanna-fly</a>
 		
   <p class="article-time">
-    <time datetime="2017-10-30T16:00:00.000Z" itemprop="datePublished"> 发表于 2017-10-31</time>
+    <time datetime="2017-10-30T16:00:00.000Z" itemprop="datePublished"> 發表於 2017-10-31</time>
     
   </p>
 </header>
@@ -202,7 +264,7 @@
 		<a href="/about" title="wanna-fly" target="_blank" itemprop="author">wanna-fly</a>
 		
   <p class="article-time">
-    <time datetime="2017-10-29T16:00:00.000Z" itemprop="datePublished"> 发表于 2017-10-30</time>
+    <time datetime="2017-10-29T16:00:00.000Z" itemprop="datePublished"> 發表於 2017-10-30</time>
     
   </p>
 </header>
@@ -259,89 +321,18 @@
 		<a href="/about" title="wanna-fly" target="_blank" itemprop="author">wanna-fly</a>
 		
   <p class="article-time">
-    <time datetime="2017-10-28T16:00:00.000Z" itemprop="datePublished"> 发表于 2017-10-29</time>
+    <time datetime="2017-10-28T16:00:00.000Z" itemprop="datePublished"> 發表於 2017-10-29</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <a id="more"></a>
-<h2 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h2><p>若（a，n）=1,则$ a^{φ(n)}=1mod n$<br>利用欧拉定理求乘法逆元<br>若φ(n)已知，则由欧拉定理可知 $a·a^{φ(n)-1}= 1 mod n $<br>$  a^{-1} = a^{φ(n)-1 }$<br><img src="/img/Euler.png" alt="Euler"><br>两个集合对应同余于模n;</p>
-<h2 id="费马小定理"><a href="#费马小定理" class="headerlink" title="费马小定理"></a>费马小定理</h2><p>p为质数且，(a,n)=1,则有$ a^{p-1}=1mod n$<br>代入欧拉定理即可证明</p>
-<h2 id="单变量线性同余"><a href="#单变量线性同余" class="headerlink" title="单变量线性同余"></a>单变量线性同余</h2><p>定理：令 a, b, n 为整数，且a&gt;0, gcd(a, n)=d<br>(1)若 d不能整除b, 则ax=b mod n 无解<br>(2)若 d能整除b, 记做d|b, 则ax=b mod n 有d个解</p>
-<p>ax = b mod n的求解过程：</p>
-<blockquote>
-<p>1.利用欧几里德算法求出d=(a, n)，若d 不能整除b, 则无解。<br>2.若d能整除b, 则令：a’=a/d,b’=b/d,n’=n/d;<br>因为 (a’, n’)=1,  a’x’ =b’ mod n’ 有唯一解，假设此解为x0<br>利用欧几里德算法求出a’模n’的乘法逆元(a’)-1, x’= (a’)-1 b’ mod n’<br>x0 = x’ mod n<br>令x= x0 +(n/d)t mod n, t=1,2, …, d-1, 即可求出剩下的d-1个解      </p>
-</blockquote>
-<p>先求a,n 的最大公因数d，d即为解的个数，然后式子两边约去d，求出第一个x值</p>
-<h2 id="中国剩余定理"><a href="#中国剩余定理" class="headerlink" title="中国剩余定理"></a>中国剩余定理</h2><blockquote>
-<p>韓信點兵問題：「今有物不知其數，三三數之剩二，五五數之剩三，七七數之剩二，問物幾何？」～(孫武 孫子算經)</p>
-</blockquote>
-<p><img src="/img/CRT.png" alt="CRT"></p>
-<blockquote>
-<p>三人同行七十稀<br>      五樹梅花廿一枝<br>      七子團圓正半月<br>      除百零五便得知。」<br>                    ～(程大位 算法統宗(1593))</p>
-</blockquote>
-
+        <h2 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h2><p>若（a，n）=1,则$ a^{φ(n)}=1mod n$<br>
         
         
         <p class="article-more-link">
           
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/security/">security</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/10/24/security/" title="密码学复习笔记之数学基础" itemprop="url">密码学复习笔记之数学基础</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="wanna-fly" target="_blank" itemprop="author">wanna-fly</a>
-		
-  <p class="article-time">
-    <time datetime="2017-10-23T16:00:00.000Z" itemprop="datePublished"> 发表于 2017-10-24</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="Euclid算法—“辗转相除法”"><a href="#Euclid算法—“辗转相除法”" class="headerlink" title="Euclid算法—“辗转相除法”"></a>Euclid算法—“辗转相除法”</h2><p>如果b|g，b|h,对于任何整数m和n，则满足b|(mg+nh).</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if c, d∈Z and c=dq+r,where q,r∈Z, then(c,d)=(d,r)</div><div class="line">proof: 1.r=c-dq, if e|c and e|d, then e|r</div><div class="line">	2.c=dq+r, if e|d and e|r, then e|c</div><div class="line">	=&gt;(c,d)=(d,r)</div></pre></td></tr></table></figure>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2017/10/24/security/#more">Read More</a>
+            <a href="/2017/10/29/security2/#more">Read More</a>
           
        </p>
     </div>
@@ -379,10 +370,10 @@
   </nav>
 
 </div>
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
 <aside class="clearfix">
 
   
@@ -392,7 +383,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">標簽</p>
 		<ul class="clearfix">
 		
 			
@@ -411,12 +402,16 @@
 				<li><a href="/tags/Test/" title="Test">Test<sup>1</sup></a></li>
 			
 		
+			
+				<li><a href="/tags/unix-network/" title="unix network">unix network<sup>1</sup></a></li>
+			
+		
 		</ul>
 </div>
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">友情鏈接</p>
     <ul>
         
     </ul>
@@ -426,7 +421,7 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
 </div>
 
   <div class="weiboshow">
@@ -448,7 +443,7 @@
 	
 	<section class="info">
 		<p> Hello ,I&#39;m ybx. <br/>
-			This is my blog,believe it or not.</p>
+			This is my blog, believe it or not.</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">
@@ -580,7 +575,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

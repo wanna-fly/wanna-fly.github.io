@@ -11,20 +11,20 @@
     
 
     
-    <meta name="description" content="欧拉定理若（a，n）=1,则$ a^{φ(n)}=1mod n$利用欧拉定理求乘法逆元若φ(n)已知，则由欧拉定理可知 $a·a^{φ(n)-1}= 1 mod n $$  a^{-1} = a^{φ(n)-1 }$两个集合对应同余于模n; 费马小定理p为质数且，(a,n)=1,则有$ a^{p-1}=1mod n$代入欧拉定理即可证明 单变量线性同余定理：令 a, b, n 为整数，且a&amp;gt">
+    <meta name="description" content="欧拉定理若（a，n）=1,则$ a^{φ(n)}=1mod n$">
 <meta name="keywords" content="security">
 <meta property="og:type" content="article">
 <meta property="og:title" content="密码学复习笔记之数论">
 <meta property="og:url" content="http://yoursite.com/2017/10/29/security2/index.html">
 <meta property="og:site_name" content="ybx&#39;s Blog">
-<meta property="og:description" content="欧拉定理若（a，n）=1,则$ a^{φ(n)}=1mod n$利用欧拉定理求乘法逆元若φ(n)已知，则由欧拉定理可知 $a·a^{φ(n)-1}= 1 mod n $$  a^{-1} = a^{φ(n)-1 }$两个集合对应同余于模n; 费马小定理p为质数且，(a,n)=1,则有$ a^{p-1}=1mod n$代入欧拉定理即可证明 单变量线性同余定理：令 a, b, n 为整数，且a&amp;gt">
+<meta property="og:description" content="欧拉定理若（a，n）=1,则$ a^{φ(n)}=1mod n$">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/img/Euler.png">
 <meta property="og:image" content="http://yoursite.com/img/CRT.png">
-<meta property="og:updated_time" content="2017-10-29T14:23:01.951Z">
+<meta property="og:updated_time" content="2018-05-29T15:43:26.459Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="密码学复习笔记之数论">
-<meta name="twitter:description" content="欧拉定理若（a，n）=1,则$ a^{φ(n)}=1mod n$利用欧拉定理求乘法逆元若φ(n)已知，则由欧拉定理可知 $a·a^{φ(n)-1}= 1 mod n $$  a^{-1} = a^{φ(n)-1 }$两个集合对应同余于模n; 费马小定理p为质数且，(a,n)=1,则有$ a^{p-1}=1mod n$代入欧拉定理即可证明 单变量线性同余定理：令 a, b, n 为整数，且a&amp;gt">
+<meta name="twitter:description" content="欧拉定理若（a，n）=1,则$ a^{φ(n)}=1mod n$">
 <meta name="twitter:image" content="http://yoursite.com/img/Euler.png">
 
     
@@ -53,7 +53,7 @@
 				<h1 class="site-name"><a href="/" title="ybx&#39;s Blog">ybx&#39;s Blog</a></h1>
 				<h2 class="blog-motto">我是一条想变强的咸鱼！</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -92,21 +92,23 @@
 		<a href="/about" title="wanna-fly" target="_blank" itemprop="author">wanna-fly</a>
 		
   <p class="article-time">
-    <time datetime="2017-10-28T16:00:00.000Z" itemprop="datePublished"> 发表于 2017-10-29</time>
+    <time datetime="2017-10-28T16:00:00.000Z" itemprop="datePublished"> 發表於 2017-10-29</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
+			<strong class="toc-title">文章目錄</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#欧拉定理"><span class="toc-number">1.</span> <span class="toc-text">欧拉定理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#费马小定理"><span class="toc-number">2.</span> <span class="toc-text">费马小定理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单变量线性同余"><span class="toc-number">3.</span> <span class="toc-text">单变量线性同余</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#中国剩余定理"><span class="toc-number">4.</span> <span class="toc-text">中国剩余定理</span></a></li></ol>
 		
 		</div>
 		
-		<a id="more"></a>
-<h2 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h2><p>若（a，n）=1,则$ a^{φ(n)}=1mod n$<br>利用欧拉定理求乘法逆元<br>若φ(n)已知，则由欧拉定理可知 $a·a^{φ(n)-1}= 1 mod n $<br>$  a^{-1} = a^{φ(n)-1 }$<br><img src="/img/Euler.png" alt="Euler"><br>两个集合对应同余于模n;</p>
+		<h2 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h2><p>若（a，n）=1,则$ a^{φ(n)}=1mod n$<br><a id="more"></a></p>
+<p>利用欧拉定理求乘法逆元</p>
+<p>若φ(n)已知，则由欧拉定理可知 $a·a^{φ(n)-1}= 1 mod n $</p>
+<p>$  a^{-1} = a^{φ(n)-1 }$<br><img src="/img/Euler.png" alt="Euler"><br>两个集合对应同余于模n;</p>
 <h2 id="费马小定理"><a href="#费马小定理" class="headerlink" title="费马小定理"></a>费马小定理</h2><p>p为质数且，(a,n)=1,则有$ a^{p-1}=1mod n$<br>代入欧拉定理即可证明</p>
 <h2 id="单变量线性同余"><a href="#单变量线性同余" class="headerlink" title="单变量线性同余"></a>单变量线性同余</h2><p>定理：令 a, b, n 为整数，且a&gt;0, gcd(a, n)=d<br>(1)若 d不能整除b, 则ax=b mod n 无解<br>(2)若 d能整除b, 记做d|b, 则ax=b mod n 有d个解</p>
 <p>ax = b mod n的求解过程：</p>
@@ -175,17 +177,17 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
+  <strong class="toc-title">文章目錄</strong>
  
  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#欧拉定理"><span class="toc-number">1.</span> <span class="toc-text">欧拉定理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#费马小定理"><span class="toc-number">2.</span> <span class="toc-text">费马小定理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单变量线性同余"><span class="toc-number">3.</span> <span class="toc-text">单变量线性同余</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#中国剩余定理"><span class="toc-number">4.</span> <span class="toc-text">中国剩余定理</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
 <aside class="clearfix">
 
   
@@ -195,7 +197,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">標簽</p>
 		<ul class="clearfix">
 		
 			
@@ -214,12 +216,16 @@
 				<li><a href="/tags/Test/" title="Test">Test<sup>1</sup></a></li>
 			
 		
+			
+				<li><a href="/tags/unix-network/" title="unix network">unix network<sup>1</sup></a></li>
+			
+		
 		</ul>
 </div>
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">友情鏈接</p>
     <ul>
         
     </ul>
@@ -229,7 +235,7 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
 </div>
 
   <div class="weiboshow">
@@ -251,7 +257,7 @@
 	
 	<section class="info">
 		<p> Hello ,I&#39;m ybx. <br/>
-			This is my blog,believe it or not.</p>
+			This is my blog, believe it or not.</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">
@@ -460,7 +466,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
