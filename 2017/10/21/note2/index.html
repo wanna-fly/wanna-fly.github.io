@@ -11,18 +11,18 @@
     
 
     
-    <meta name="description" content="学习建立一个简易微博系统 1.开始1express -e ejs ‘projectname’ 建立项目文件1npm install 安装依赖1node ./bin/www express4需要以此命令来启动,node app.js 无法启动。？？留个坑">
-<meta name="keywords" content="Note">
+    <meta name="description" content="学习建立一个简易微博系统 ## 1.开始 1express -e ejs ‘projectname’ 建立项目文件 1npm install  安装依赖 1node .&#x2F;bin&#x2F;www  express4需要以此命令来启动,node app.js 无法启动。？？留个坑">
 <meta property="og:type" content="article">
 <meta property="og:title" content="node.js学习笔记(二)--动手实例">
 <meta property="og:url" content="http://yoursite.com/2017/10/21/note2/index.html">
 <meta property="og:site_name" content="ybx&#39;s Blog">
-<meta property="og:description" content="学习建立一个简易微博系统 1.开始1express -e ejs ‘projectname’ 建立项目文件1npm install 安装依赖1node ./bin/www express4需要以此命令来启动,node app.js 无法启动。？？留个坑">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-21T08:33:24.982Z">
+<meta property="og:description" content="学习建立一个简易微博系统 ## 1.开始 1express -e ejs ‘projectname’ 建立项目文件 1npm install  安装依赖 1node .&#x2F;bin&#x2F;www  express4需要以此命令来启动,node app.js 无法启动。？？留个坑">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-10-20T16:00:00.000Z">
+<meta property="article:modified_time" content="2017-10-21T08:33:24.983Z">
+<meta property="article:author" content="wanna-fly">
+<meta property="article:tag" content="Note">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="node.js学习笔记(二)--动手实例">
-<meta name="twitter:description" content="学习建立一个简易微博系统 1.开始1express -e ejs ‘projectname’ 建立项目文件1npm install 安装依赖1node ./bin/www express4需要以此命令来启动,node app.js 无法启动。？？留个坑">
 
     
     <link rel="alternative" href="/atom.xml" title="ybx&#39;s Blog" type="application/atom+xml">
@@ -34,8 +34,10 @@
     <link rel="apple-touch-icon" href="/img/jacman.jpg">
     <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
     
-    <link rel="stylesheet" href="/css/style.css">
-</head>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.1.1"></head>
 
   <body>
     <header>
@@ -48,7 +50,7 @@
 			
 			<div id="textlogo">
 				<h1 class="site-name"><a href="/" title="ybx&#39;s Blog">ybx&#39;s Blog</a></h1>
-				<h2 class="blog-motto">我是一条想变强的咸鱼！</h2>
+				<h2 class="blog-motto">保持输入，保持输出</h2>
 			</div>
 			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
@@ -98,69 +100,63 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-开始"><span class="toc-number">1.</span> <span class="toc-text">1.开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-路由规则"><span class="toc-number">2.</span> <span class="toc-text">2.路由规则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模板引擎"><span class="toc-number">2.1.</span> <span class="toc-text">模板引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ejs三种标签"><span class="toc-number">2.2.</span> <span class="toc-text">ejs三种标签</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E8%A7%84%E5%88%99"><span class="toc-number">1.</span> <span class="toc-text">2.路由规则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E"><span class="toc-number">1.1.</span> <span class="toc-text">模板引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ejs%E4%B8%89%E7%A7%8D%E6%A0%87%E7%AD%BE"><span class="toc-number">1.2.</span> <span class="toc-text">ejs三种标签</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<p>学习建立一个简易微博系统</p>
-<h2 id="1-开始"><a href="#1-开始" class="headerlink" title="1.开始"></a>1.开始</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">express -e ejs ‘projectname’</div></pre></td></tr></table></figure>
-<p>建立项目文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install</div></pre></td></tr></table></figure></p>
-<p>安装依赖<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node ./bin/www</div></pre></td></tr></table></figure></p>
-<p>express4需要以此命令来启动,node app.js 无法启动。？？留个坑<br><a id="more"></a></p>
+		<p>学习建立一个简易微博系统 ## 1.开始 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">express -e ejs ‘projectname’</span><br></pre></td></tr></table></figure> 建立项目文件 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install </span><br></pre></td></tr></table></figure> 安装依赖 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node ./bin/www </span><br></pre></td></tr></table></figure> express4需要以此命令来启动,node app.js 无法启动。？？留个坑 <span id="more"></span></p>
 <blockquote>
-<p>app.set 是 Express 的参数设置工具，接受一个键（key）和一个值（value）</p>
-<ul>
-<li>basepath：基础地址，通常用于 res.redirect() 跳转。</li>
-<li>views：视图文件的目录，存放模板文件。</li>
-<li>view engine：视图模板引擎。</li>
-<li>view options：全局视图参数对象。</li>
-<li>view cache：启用视图缓存。</li>
-</ul>
+<p>app.set 是 Express 的参数设置工具，接受一个键（key）和一个值（value） - basepath：基础地址，通常用于 res.redirect() 跳转。 - views：视图文件的目录，存放模板文件。 - view engine：视图模板引擎。 - view options：全局视图参数对象。 - view cache：启用视图缓存。</p>
 </blockquote>
-<p>app.get(‘/‘,routes.index);路由控制器，用户如果访问”/“路径，则由routes.index 来控制它接受两个参数，第一个参数是请求的路径，第二个参数是一个回调函数，该路由规则被触发时调用回调函数，其参数表传递两个参数，分别是req和res，表示请求信息和响应信息</p>
+<p>app.get('/',routes.index);路由控制器，用户如果访问"/"路径，则由routes.index 来控制它接受两个参数，第一个参数是请求的路径，第二个参数是一个回调函数，该路由规则被触发时调用回调函数，其参数表传递两个参数，分别是req和res，表示请求信息和响应信息</p>
 <blockquote>
-<p>req<br>    req.params.name             -&gt;/user/:name<br>    req.query.name              -&gt;/user?name=shiyq<br>    req.body.name               -&gt;名称为name的表单输入值<br>    req.cookie.name             -&gt;cookie的name属性<br>res<br>    res.cookie(name,value)      -&gt;设置cookie<br>    res.redirect(‘/foo/bar’)    -&gt;跳转到/foo/bar<br>    res.location(‘foo/bar’)     -&gt;类似redirect<br>    res.send(‘name’)            -&gt;向浏览器输出<br>    res.json()                  -&gt;向浏览器返回json数据<br>    res.render(view, [locals], callback)  -&gt;转向view，并携带变量<br>    res.end()                   -&gt;结束输出</p>
+<p>req     req.params.name     -&gt;/user/:name     req.query.name       -&gt;/user?name=shiyq     req.body.name       -&gt;名称为name的表单输入值     req.cookie.name     -&gt;cookie的name属性 res     res.cookie(name,value)   -&gt;设置cookie     res.redirect('/foo/bar')    -&gt;跳转到/foo/bar     res.location('foo/bar')     -&gt;类似redirect     res.send('name')   -&gt;向浏览器输出     res.json()                  -&gt;向浏览器返回json数据     res.render(view, [locals], callback)  -&gt;转向view，并携带变量     res.end()                   -&gt;结束输出</p>
 </blockquote>
-<p>app.use和app.get<br>app.get相当于app.use的一个实现</p>
+<p>app.use和app.get app.get相当于app.use的一个实现</p>
 <blockquote>
-<p>app.js 中通过 app.get(‘/‘, routes.index); 将“/ ”路径映射到 exports.index<br>函数下。其中只有一个语句 res.render(‘index’, { title: ‘Express’ })，功能是<br>调用模板解析引擎，翻译名为 index 的模板，并传入一个对象作为参数</p>
-<p>app.get(‘/‘, routes.index)，规定路径为“ /”的 GET 请求由 routes.index 函数处理。 routes.index 通过 res.render(‘index’, { title: ‘Express’ }) 调用视图模板 index，传递 title变量。最终视图模板生成 HTML 页面，返回给浏览器，</p>
+<p>app.js 中通过 app.get('/', routes.index); 将“/ ”路径映射到 exports.index 函数下。其中只有一个语句 res.render('index', { title: 'Express' })，功能是 调用模板解析引擎，翻译名为 index 的模板，并传入一个对象作为参数</p>
+</blockquote>
+<blockquote>
+<p>app.get('/', routes.index)，规定路径为“ /”的 GET 请求由 routes.index 函数处理。 routes.index 通过 res.render('index', { title: 'Express' }) 调用视图模板 index，传递 title变量。最终视图模板生成 HTML 页面，返回给浏览器，</p>
 </blockquote>
 <p>浏览器发起请求，由路由控制器接受，根据不同的路径定向到不同的控制器。控制器处理用户的具体请求，可能会访问数据库中的对象，即模型部分.控制器还要访问模板引擎，生成视图的 HTML，最后再由控制器返回给浏览器。</p>
-<h2 id="2-路由规则"><a href="#2-路由规则" class="headerlink" title="2.路由规则"></a>2.路由规则</h2><table>
+<h2 id="路由规则">2.路由规则</h2>
+<table>
 <thead>
-<tr>
+<tr class="header">
 <th>请求方式</th>
 <th>功能</th>
 <th>绑定函数</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td> GET</td>
+<tr class="odd">
+<td>GET</td>
 <td>获取</td>
 <td>app.get(path,callback)</td>
 </tr>
-<tr>
-<td> POST</td>
+<tr class="even">
+<td>POST</td>
 <td>新增</td>
 <td>app.get(path,callback)</td>
 </tr>
-<tr>
-<td> PUT</td>
+<tr class="odd">
+<td>PUT</td>
 <td>更新</td>
 <td>app.get(path,callback)</td>
 </tr>
-<tr>
-<td> DELETE</td>
+<tr class="even">
+<td>DELETE</td>
 <td>删除</td>
 <td>app.get(path,callback)</td>
 </tr>
 </tbody>
 </table>
 <p>app.all 函数，它支持把所有的请求方式绑定到同一个响应函数，</p>
-<h3 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h3><p>在路由routes/index.js下res.render的功能是调用模板引擎，并将其产生的页面直接返回给客户端。它接受两个参数，第一个是模板的名称，即views目录下的模板文件名，不包含文件的扩展名；第二个参数是传递给模板的数据，用于模板翻译</p>
-<h3 id="ejs三种标签"><a href="#ejs三种标签" class="headerlink" title="ejs三种标签"></a>ejs三种标签</h3><ol>
+<h3 id="模板引擎">模板引擎</h3>
+<p>在路由routes/index.js下res.render的功能是调用模板引擎，并将其产生的页面直接返回给客户端。它接受两个参数，第一个是模板的名称，即views目录下的模板文件名，不包含文件的扩展名；第二个参数是传递给模板的数据，用于模板翻译</p>
+<h3 id="ejs三种标签">ejs三种标签</h3>
+<ol type="1">
 <li>&lt;% code %&gt;： JavaScript 代码</li>
 <li>&lt;%= code %&gt;：显示转义后的 HTML内容</li>
 <li>&lt;%- code %&gt;：显示原始 HTML 内容</li>
@@ -196,10 +192,10 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2017/10/22/mongodb/" title="mongodb学习">
+ <a href="/2017/10/24/security/" title="密码学复习笔记之数学基础">
   <strong>上一篇：</strong><br/>
   <span>
-  mongodb学习</span>
+  密码学复习笔记之数学基础</span>
 </a>
 </div>
 
@@ -224,7 +220,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-开始"><span class="toc-number">1.</span> <span class="toc-text">1.开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-路由规则"><span class="toc-number">2.</span> <span class="toc-text">2.路由规则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模板引擎"><span class="toc-number">2.1.</span> <span class="toc-text">模板引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ejs三种标签"><span class="toc-number">2.2.</span> <span class="toc-text">ejs三种标签</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E8%A7%84%E5%88%99"><span class="toc-number">1.</span> <span class="toc-text">2.路由规则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E"><span class="toc-number">1.1.</span> <span class="toc-text">模板引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ejs%E4%B8%89%E7%A7%8D%E6%A0%87%E7%AD%BE"><span class="toc-number">1.2.</span> <span class="toc-text">ejs三种标签</span></a></li></ol></li></ol>
  
   </div>
 
@@ -247,15 +243,11 @@
 			
 		
 			
-				<li><a href="/tags/Note/" title="Note">Note<sup>4</sup></a></li>
+				<li><a href="/tags/Note/" title="Note">Note<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/CSS/" title="CSS">CSS<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Test/" title="Test">Test<sup>1</sup></a></li>
+				<li><a href="/tags/Ads/" title="Ads">Ads<sup>1</sup></a></li>
 			
 		
 			
@@ -318,7 +310,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2024 
 		
 		<a href="/about" target="_blank" title="wanna-fly">wanna-fly</a>
 		

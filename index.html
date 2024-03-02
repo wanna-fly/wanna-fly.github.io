@@ -11,16 +11,15 @@
     
 
     
-    <meta name="description" content="请原谅我多情的打扰">
+    <meta name="description" content="Be Happy plz.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="ybx&#39;s Blog">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="ybx&#39;s Blog">
-<meta property="og:description" content="请原谅我多情的打扰">
-<meta property="og:locale" content="zh-Hans">
+<meta property="og:description" content="Be Happy plz.">
+<meta property="og:locale">
+<meta property="article:author" content="wanna-fly">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ybx&#39;s Blog">
-<meta name="twitter:description" content="请原谅我多情的打扰">
 
     
     <link rel="alternative" href="/atom.xml" title="ybx&#39;s Blog" type="application/atom+xml">
@@ -32,8 +31,122 @@
     <link rel="apple-touch-icon" href="/img/jacman.jpg">
     <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
     
-    <link rel="stylesheet" href="/css/style.css">
-</head>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.1.1"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
   <body>
     <header>
@@ -46,7 +159,7 @@
 			
 			<div id="textlogo">
 				<h1 class="site-name"><a href="/" title="ybx&#39;s Blog">ybx&#39;s Blog</a></h1>
-				<h2 class="blog-motto">我是一条想变强的咸鱼！</h2>
+				<h2 class="blog-motto">保持输入，保持输出</h2>
 			</div>
 			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
@@ -82,6 +195,69 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2023/04/01/opt/" title="广告业务中的带约束最优化问题" itemprop="url">广告业务中的带约束最优化问题</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="wanna-fly" target="_blank" itemprop="author">wanna-fly</a>
+		
+  <p class="article-time">
+    <time datetime="2023-04-01T02:00:00.000Z" itemprop="datePublished"> Published 2023-04-01</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>在广告业务中，约束最优化问题是我们常用的建模利器，其数理基础理论完备且简洁清晰，但具体到实践中结合各自的业务场景，其问题建模、参数求解方式等又各有不同。因此我们对相关应用问题进行了系统梳理，首先对涉及的相关数学内容进行了回顾，然后汇总梳理了约束优化问题在智能算力、出价、混排、品牌等不同业务上的应用建模及求解过程，并总结了不同实践场景下参数的多种求解方式，以期能够为后续的业务建模上带来一些启发。</p>
+<h1 id="基础回顾"><strong>基础回顾</strong></h1>
+<ol type="1">
+<li><strong>对于线性规划问题</strong>，原始问题和对偶问题对偶间隙为0，均满足强对偶定理（前提是存在可行解），即原问题最优解下的目标函数值等于对偶问题最优解下的目标函数值。等价于求解对偶问题。</li>
+<li>对于满足slater条件的凸优化问题，强对偶成立；此时KKT条件是最优解的充分必要条件；一般遇到的凸优化问题中都是slater条件成立的，此时凸优化问题就变成了求解KKT点；</li>
+<li>如果强对偶成立，则可以推出互补松弛定理。</li>
+<li>KKT条件一般用于非线性规划问题（包含线性规划）求解，例如SVM（线性规划问题中，对x求导后偏导数中不含x）；</li>
+</ol>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2023/04/01/opt/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Ads/">Ads</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2018/05/21/arp/" title="网络攻防实践课堂演示" itemprop="url">网络攻防实践课堂演示</a>
   </h1>
   <p class="article-author">By
@@ -96,7 +272,8 @@
     <div class="article-content">
         
         <p>内容：在虚拟机环境下，以kali系统作攻击者，win7系统作为靶机，进行内网arp攻击以及arp欺骗，实现断网，获取账密，会话劫持以及DNS欺骗。</p>
-<h2 id="arp协议"><a href="#arp协议" class="headerlink" title="arp协议"></a>arp协议</h2><p>ARP（Address Resolution Protocol），地址解析协议 ，作用是将网络层地址（例如IP地址）转换为链路层地址（即MAC地址）。在以太网协议（数据链路层）中规定，主机之间需要通过MAC地址进行通信，但是在上层协议中，网络层和运输层只关心IP地址，所以数据链路层收到上层传递的数据包中并不包含MAC地址，为了解决这个问题，需要引入ARP协议，使得主机可以根据网络层IP数据包包头中的IP地址信息来获取相应的目标MAC地址，从而构造以太网帧实现通信。</p>
+<h2 id="arp协议">arp协议</h2>
+<p>ARP（Address Resolution Protocol），地址解析协议 ，作用是将网络层地址（例如IP地址）转换为链路层地址（即MAC地址）。在以太网协议（数据链路层）中规定，主机之间需要通过MAC地址进行通信，但是在上层协议中，网络层和运输层只关心IP地址，所以数据链路层收到上层传递的数据包中并不包含MAC地址，为了解决这个问题，需要引入ARP协议，使得主机可以根据网络层IP数据包包头中的IP地址信息来获取相应的目标MAC地址，从而构造以太网帧实现通信。</p>
         
         
         <p class="article-more-link">
@@ -152,12 +329,20 @@
 </header>
     <div class="article-content">
         
-        <h2 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h2><h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><ul>
+        <h2 id="要求">要求</h2>
+<h3 id="客户端">客户端</h3>
+<ul>
 <li>用户账号密码登录</li>
 <li>上传文件</li>
 <li>查看文件列表</li>
 <li>删除文件（需要进行权限认证，每个用户仅可以删除自己上传的文件）</li>
 <li>下载文件</li>
+</ul>
+<!---more -->
+<h3 id="服务器端">服务器端</h3>
+<ul>
+<li>当客户端登录时从数组中查找用户账号密码信息并判断是否登录成功；</li>
+<li>根据客户端命令完成相应功能——接收文件，发送文件（需先判断文件是否存在），删除文件（先判断文件是否存在，然后判断是否有删除权限）；返回文件列表。</li>
 </ul>
         
         
@@ -214,7 +399,8 @@
 </header>
     <div class="article-content">
         
-        <h2 id="认证"><a href="#认证" class="headerlink" title="认证"></a>认证</h2><p>消息认证确保收到的数据确实和发送时的一样(即没有修改、插入、删除或重放)，且发送方声称的身份是真实有效的<br>三种消息认证的方法<br>1.消息加密<br>2.消息认证码（MAC）<br>3.哈希函数</p>
+        <h2 id="认证">认证</h2>
+<p>消息认证确保收到的数据确实和发送时的一样(即没有修改、插入、删除或重放)，且发送方声称的身份是真实有效的 三种消息认证的方法 1.消息加密 2.消息认证码（MAC） 3.哈希函数</p>
         
         
         <p class="article-more-link">
@@ -270,8 +456,8 @@
 </header>
     <div class="article-content">
         
-        <h2 id="问题的提出"><a href="#问题的提出" class="headerlink" title="问题的提出"></a>问题的提出</h2><p>1.密钥管理量的困难，传统密钥n个用户需要C(n,2)=n(n-1)/2个密钥<br>2.数字签名的问题，传统加密算法无法实现抗抵赖<br>3.密钥必须通过安全信道分配，如物理硬件</p>
-<h2 id="公钥密码简介"><a href="#公钥密码简介" class="headerlink" title="公钥密码简介"></a>公钥密码简介</h2><p>公开密钥算法是非对称算法，即密钥分为公钥和私钥，因此称双密钥体制，其中公钥可以公开，因此也称公钥算法，基于数学函数而不是代替和换位</p>
+        <h2 id="问题的提出">问题的提出</h2>
+<p>1.密钥管理量的困难，传统密钥n个用户需要C(n,2)=n(n-1)/2个密钥 2.数字签名的问题，传统加密算法无法实现抗抵赖 3.密钥必须通过安全信道分配，如物理硬件 ## 公钥密码简介 公开密钥算法是非对称算法，即密钥分为公钥和私钥，因此称双密钥体制，其中公钥可以公开，因此也称公钥算法，基于数学函数而不是代替和换位</p>
         
         
         <p class="article-more-link">
@@ -308,65 +494,9 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/10/29/security2/" title="密码学复习笔记之数论" itemprop="url">密码学复习笔记之数论</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="wanna-fly" target="_blank" itemprop="author">wanna-fly</a>
-		
-  <p class="article-time">
-    <time datetime="2017-10-28T16:00:00.000Z" itemprop="datePublished"> Published 2017-10-29</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h2><p>若（a，n）=1,则$ a^{φ(n)}=1mod n$<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2017/10/29/security2/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/security/">security</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next&lt;span&gt;&lt;&#x2F;span&gt;</a>
   </nav>
 
 </div>
@@ -391,15 +521,11 @@
 			
 		
 			
-				<li><a href="/tags/Note/" title="Note">Note<sup>4</sup></a></li>
+				<li><a href="/tags/Note/" title="Note">Note<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/CSS/" title="CSS">CSS<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Test/" title="Test">Test<sup>1</sup></a></li>
+				<li><a href="/tags/Ads/" title="Ads">Ads<sup>1</sup></a></li>
 			
 		
 			
@@ -462,7 +588,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2024 
 		
 		<a href="/about" target="_blank" title="wanna-fly">wanna-fly</a>
 		
