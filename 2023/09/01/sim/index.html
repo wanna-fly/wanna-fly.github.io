@@ -4,21 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>ybx&#39;s Blog</title>
+    <title>长序列建模在广告模型中的应用 | ybx&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="wanna-fly">
     
 
     
-    <meta name="description" content="Be Happy plz.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ybx&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+    <meta name="description" content="SIM  https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2006.05639.pdf   GSU（General Search Unit）   hard search方式：行业id、内容tag、近邻cluster id等 soft search方式：内容理解embedding计算内积、端到端可学习方式计算attention  ESU（Exact Search Unit）  形式上一般是multi-h">
+<meta property="og:type" content="article">
+<meta property="og:title" content="长序列建模在广告模型中的应用">
+<meta property="og:url" content="http://yoursite.com/2023/09/01/sim/index.html">
 <meta property="og:site_name" content="ybx&#39;s Blog">
-<meta property="og:description" content="Be Happy plz.">
+<meta property="og:description" content="SIM  https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2006.05639.pdf   GSU（General Search Unit）   hard search方式：行业id、内容tag、近邻cluster id等 soft search方式：内容理解embedding计算内积、端到端可学习方式计算attention  ESU（Exact Search Unit）  形式上一般是multi-h">
 <meta property="og:locale">
+<meta property="article:published_time" content="2023-09-01T02:00:00.000Z">
+<meta property="article:modified_time" content="2024-03-09T04:44:19.925Z">
 <meta property="article:author" content="wanna-fly">
+<meta property="article:tag" content="Ads">
 <meta name="twitter:card" content="summary">
 
     
@@ -187,12 +190,10 @@ mjx-container[display="true"] + br {
 </div>
     </header>
     <div id="container">
-      <div id="main">
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
   <h1 itemprop="name">
     
       <a href="/2023/09/01/sim/" title="长序列建模在广告模型中的应用" itemprop="url">长序列建模在广告模型中的应用</a>
@@ -206,9 +207,16 @@ mjx-container[display="true"] + br {
     
   </p>
 </header>
-    <div class="article-content">
-        
-        <h2 id="sim"><strong>SIM</strong></h2>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#sim"><span class="toc-number">1.</span> <span class="toc-text">SIM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text">优化点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#gsu"><span class="toc-number">2.1.</span> <span class="toc-text">GSU</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#esu"><span class="toc-number">2.2.</span> <span class="toc-text">ESU</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">2.3.</span> <span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%9A%E7%95%8Cpaper"><span class="toc-number">3.</span> <span class="toc-text">业界paper</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E8%B7%B5%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">实践问题</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="sim"><strong>SIM</strong></h2>
 <blockquote>
 <p>https://arxiv.org/pdf/2006.05639.pdf</p>
 </blockquote>
@@ -223,15 +231,61 @@ mjx-container[display="true"] + br {
 </ul>
 <p>形式上一般是multi-head的target Attention。</p>
 <p>side info一般包括pid、aid、tag、timestamp、playtime、duration、action等信息（广告侧ID、用户侧交互后验）。GSU输入量级5k<sub>1w，检索输出topK量级50</sub>100供ESU使用。</p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2023/09/01/sim/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
+<span id="more"></span>
+<h2 id="优化点"><strong>优化点</strong></h2>
+<h3 id="gsu"><strong>GSU</strong></h3>
+<ul>
+<li>hard search-&gt;soft search-&gt;端到端</li>
+<li>增加不同gsu通路（hard search）</li>
+</ul>
+<h3 id="esu"><strong>ESU</strong></h3>
+<ul>
+<li>target attention计算解耦</li>
+<li>分head精筛topK</li>
+<li>query特征强化</li>
+<li>完善side info信息</li>
+<li>position embedding 1）节省计算量2）辅助esu attention学习</li>
+</ul>
+<h3 id="其他"><strong>其他</strong></h3>
+<ul>
+<li>前置商业化意图过滤</li>
+<li>query与gsu序列笛卡尔交叉</li>
+<li>attention计算优化</li>
+</ul>
+<h2 id="业界paper"><strong>业界paper</strong></h2>
+<ul>
+<li>阿里ETA</li>
+</ul>
+<blockquote>
+<p>https://arxiv.org/abs/2108.04468</p>
+</blockquote>
+<ul>
+<li>美团SDIM</li>
+</ul>
+<blockquote>
+<p><a href="https://arxiv.org/abs/2205.10249">https://arxiv.org/abs/2205.10249</a></p>
+</blockquote>
+<ul>
+<li>快手TWIN</li>
+</ul>
+<blockquote>
+<p>https://arxiv.org/pdf/2302.02352.pdf</p>
+</blockquote>
+<h2 id="实践问题"><strong>实践问题</strong></h2>
+<ul>
+<li>跨域数据</li>
+</ul>
+<p>跨域数据对当前模型是否有效果、效果有多大？</p>
+<ul>
+<li>转化深度</li>
+</ul>
+<p>长期行为大多为浅度数据，浅度数据对深度模型是否有效果、效果有多大？</p>
+<ul>
+<li>防止穿越</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 
@@ -244,276 +298,45 @@ mjx-container[display="true"] + br {
 
 
 
-
-<div class="comments-count">
+	<div class="article-share" id="share">
 	
-</div>
+	  <div data-url="http://yoursite.com/2023/09/01/sim/" data-title="长序列建模在广告模型中的应用 | ybx&#39;s Blog" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
 
 </footer>
 
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2023/04/01/opt/" title="广告业务中的带约束最优化问题" itemprop="url">广告业务中的带约束最优化问题</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="wanna-fly" target="_blank" itemprop="author">wanna-fly</a>
-		
-  <p class="article-time">
-    <time datetime="2023-04-01T02:00:00.000Z" itemprop="datePublished"> Published 2023-04-01</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>在广告业务中，约束最优化问题是我们常用的建模利器，其数理基础理论完备且简洁清晰，但具体到实践中结合各自的业务场景，其问题建模、参数求解方式等又各有不同。因此我们对相关应用问题进行了系统梳理，首先对涉及的相关数学内容进行了回顾，然后汇总梳理了约束优化问题在智能算力、出价、混排、品牌等不同业务上的应用建模及求解过程，并总结了不同实践场景下参数的多种求解方式，以期能够为后续的业务建模上带来一些启发。</p>
-<h1 id="基础回顾"><strong>基础回顾</strong></h1>
-<ol type="1">
-<li><strong>对于线性规划问题</strong>，原始问题和对偶问题对偶间隙为0，均满足强对偶定理（前提是存在可行解），即原问题最优解下的目标函数值等于对偶问题最优解下的目标函数值。等价于求解对偶问题。</li>
-<li>对于满足slater条件的凸优化问题，强对偶成立；此时KKT条件是最优解的充分必要条件；一般遇到的凸优化问题中都是slater条件成立的，此时凸优化问题就变成了求解KKT点；</li>
-<li>如果强对偶成立，则可以推出互补松弛定理。</li>
-<li>KKT条件一般用于非线性规划问题（包含线性规划）求解，例如SVM（线性规划问题中，对x求导后偏导数中不含x）；</li>
-</ol>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2023/04/01/opt/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Ads/">Ads</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
+   	       
+	</article>
 	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2023/04/01/opt/"  title="广告业务中的带约束最优化问题">
+ <strong>下一篇：</strong><br/> 
+ <span>广告业务中的带约束最优化问题
+</span>
+</a>
 </div>
 
-</footer>
+</nav>
 
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2018/05/21/arp/" title="网络攻防实践课堂演示" itemprop="url">网络攻防实践课堂演示</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="wanna-fly" target="_blank" itemprop="author">wanna-fly</a>
-		
-  <p class="article-time">
-    <time datetime="2018-05-20T16:00:00.000Z" itemprop="datePublished"> Published 2018-05-21</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>内容：在虚拟机环境下，以kali系统作攻击者，win7系统作为靶机，进行内网arp攻击以及arp欺骗，实现断网，获取账密，会话劫持以及DNS欺骗。</p>
-<h2 id="arp协议">arp协议</h2>
-<p>ARP（Address Resolution Protocol），地址解析协议 ，作用是将网络层地址（例如IP地址）转换为链路层地址（即MAC地址）。在以太网协议（数据链路层）中规定，主机之间需要通过MAC地址进行通信，但是在上层协议中，网络层和运输层只关心IP地址，所以数据链路层收到上层传递的数据包中并不包含MAC地址，为了解决这个问题，需要引入ARP协议，使得主机可以根据网络层IP数据包包头中的IP地址信息来获取相应的目标MAC地址，从而构造以太网帧实现通信。</p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2018/05/21/arp/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/security/">security</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
 	
-</div>
-
-</footer>
-
-
-    </article>
 
 
 
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/12/27/unpve/" title="unix网络编程之多人文件共享系统" itemprop="url">unix网络编程之多人文件共享系统</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="wanna-fly" target="_blank" itemprop="author">wanna-fly</a>
-		
-  <p class="article-time">
-    <time datetime="2017-12-26T16:00:00.000Z" itemprop="datePublished"> Published 2017-12-27</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="要求">要求</h2>
-<h3 id="客户端">客户端</h3>
-<ul>
-<li>用户账号密码登录</li>
-<li>上传文件</li>
-<li>查看文件列表</li>
-<li>删除文件（需要进行权限认证，每个用户仅可以删除自己上传的文件）</li>
-<li>下载文件</li>
-</ul>
-<!---more -->
-<h3 id="服务器端">服务器端</h3>
-<ul>
-<li>当客户端登录时从数组中查找用户账号密码信息并判断是否登录成功；</li>
-<li>根据客户端命令完成相应功能——接收文件，发送文件（需先判断文件是否存在），删除文件（先判断文件是否存在，然后判断是否有删除权限）；返回文件列表。</li>
-</ul>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2017/12/27/unpve/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/unix-network/">unix network</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/10/31/security5/" title="密码学复习笔记之消息认证与数字签名" itemprop="url">密码学复习笔记之消息认证与数字签名</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="wanna-fly" target="_blank" itemprop="author">wanna-fly</a>
-		
-  <p class="article-time">
-    <time datetime="2017-10-30T16:00:00.000Z" itemprop="datePublished"> Published 2017-10-31</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="认证">认证</h2>
-<p>消息认证确保收到的数据确实和发送时的一样(即没有修改、插入、删除或重放)，且发送方声称的身份是真实有效的 三种消息认证的方法 1.消息加密 2.消息认证码（MAC） 3.哈希函数</p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2017/10/31/security5/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/security/">security</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-
-  <nav id="page-nav" class="clearfix">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next&lt;span&gt;&lt;&#x2F;span&gt;</a>
-  </nav>
-
-</div>
+</div>  
       <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#sim"><span class="toc-number">1.</span> <span class="toc-text">SIM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text">优化点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#gsu"><span class="toc-number">2.1.</span> <span class="toc-text">GSU</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#esu"><span class="toc-number">2.2.</span> <span class="toc-text">ESU</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">2.3.</span> <span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%9A%E7%95%8Cpaper"><span class="toc-number">3.</span> <span class="toc-text">业界paper</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E8%B7%B5%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">实践问题</span></a></li></ol>
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
@@ -653,12 +476,89 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
 });
 </script>
 
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
 
 
 
@@ -760,4 +660,4 @@ var _hmt = _hmt || [];
 <!-- Tiny_search End -->
 
   </body>
- </html>
+</html>
